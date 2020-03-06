@@ -1,0 +1,23 @@
+<ion-content>
+	<div class="login">
+		<div class="logo">
+		</div>
+		<form [formGroup]="Signup" (ngSubmit)="Submit()">
+			<ion-input type="text" formControlName="FirstName" placeholder="First Name" (keyup.enter)="Submit()"></ion-input>
+			<ion-input type="text" formControlName="LastName" placeholder="Last Name" (keyup.enter)="Submit()"></ion-input>
+			<br>
+			<ion-input type="email" formControlName="Email" placeholder="Email Address" (keyup.enter)="Submit()"></ion-input>
+			<ion-input type="email" formControlName="EmailConfirm" placeholder="Confirm Email Address" (keyup.enter)="Submit()"></ion-input>
+			<br>
+			<ion-input type="password" formControlName="Password" placeholder="Password" (keyup.enter)="Submit()"></ion-input>
+			<ion-input type="password" formControlName="PasswordConfirm" placeholder="Confirm Password" (keyup.enter)="Submit()"></ion-input>
+			<div class="buttons">
+				<ion-button routerLink="/login">Back</ion-button>
+				<ion-button type="submit">Confirm</ion-button>
+			</div>
+			<ion-item lines="none">
+				<p class="error">{{Error}}</p>
+			</ion-item>
+		</form>
+	</div>
+</ion-content>

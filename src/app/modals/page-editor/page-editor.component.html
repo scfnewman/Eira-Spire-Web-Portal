@@ -1,0 +1,66 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>
+			Page Editor
+		</ion-title>
+		<ion-buttons slot="end">
+			<ion-text *ngIf="Error" color="danger">Please fill in the required fields before saving!</ion-text>
+			<ion-button (click)="Submit()">Save</ion-button>
+			<ion-button (click)="DismissModal()">Exit</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<form [formGroup]="PageData">
+		<ion-toolbar>
+			<ion-title>
+				Details
+			</ion-title>
+		</ion-toolbar>
+		<ion-list>
+			<ion-item>
+				<ion-label>Title<span class="required">*</span></ion-label>
+				<ion-input placeholder="Title" formControlName="Title"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Subtitle</ion-label>
+				<ion-input placeholder="Subtitle" formControlName="Subtitle"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Category<span class="required">*</span></ion-label>
+				<ion-input placeholder="Category" formControlName="Category"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Author<span class="required">*</span></ion-label>
+				<ion-input placeholder="Author" formControlName="Author"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Body</ion-label>
+				<ion-textarea placeholder="Body" autoGrow="true" formControlName="Body"></ion-textarea>
+			</ion-item>
+		</ion-list>
+	</form>
+
+	<ion-toolbar>
+		<ion-title>
+			Sections
+		</ion-title>
+	</ion-toolbar>
+	<form *ngFor="let _Section of PageSections; index as i" [formGroup]="PageSections[i]">
+		<ion-list class="Section" lines="none">
+			<ion-item>
+				<ion-input placeholder="Heading" formControlName="Heading"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-textarea placeholder="Body" autoGrow="true" formControlName="Body"></ion-textarea>
+			</ion-item>
+			<ion-item>
+				<ion-button fill="outline" expand="block" (click)="DeleteSection(i)">Delete Section</ion-button>
+			</ion-item>
+		</ion-list>
+	</form>
+	<ion-item>
+		<ion-button expand="block" (click)="AddSection()">New Section</ion-button>
+	</ion-item>
+</ion-content>

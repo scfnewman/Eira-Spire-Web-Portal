@@ -1,0 +1,144 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>
+			Character Editor
+		</ion-title>
+		<ion-buttons slot="end">
+			<ion-text *ngIf="Error" color="danger">Please fill in the required fields before saving!</ion-text>
+			<ion-button (click)="Submit()">Save</ion-button>
+			<ion-button (click)="DismissModal()">Exit</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<form [formGroup]="CharacterData">
+		<ion-toolbar>
+			<ion-title>
+				Status
+			</ion-title>
+		</ion-toolbar>
+		<ion-list>
+			<ion-item>
+				<ion-label>Alive</ion-label>
+				<ion-checkbox formControlName="Alive"></ion-checkbox>
+			</ion-item>
+			<ion-item>
+				<ion-label>Retired</ion-label>
+				<ion-checkbox formControlName="Retired"></ion-checkbox>
+			</ion-item>
+		</ion-list>
+
+		<ion-toolbar>
+			<ion-title>Details</ion-title>
+		</ion-toolbar>
+
+		<ion-list>
+			<ion-item>
+				<ion-label>First Name<span class="required">*</span></ion-label>
+				<ion-input placeholder="First Name" formControlName="FirstName"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Last Name<span class="required">*</span></ion-label>
+				<ion-input placeholder="Last Name" formControlName="LastName"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Name</ion-label>
+				<ion-input placeholder="Earned Name" formControlName="EarnedName"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Identity<span class="required">*</span></ion-label>
+				<ion-input placeholder="Identity" formControlName="Identity"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Age<span class="required">*</span></ion-label>
+				<ion-input type="number" formControlName="Age"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Gender<span class="required">*</span></ion-label>
+				<ion-select placeholder="Select one" formControlName="Gender">
+					<ion-select-option value="Male">Male</ion-select-option>
+					<ion-select-option value="Female">Female</ion-select-option>
+				</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label>Lineage<span class="required">*</span></ion-label>
+				<ion-select placeholder="Select one" formControlName="Lineage">
+					<ion-select-option value="Human">None</ion-select-option>
+					<ion-select-option value="Briar">Briar</ion-select-option>
+					<ion-select-option value="Cambion">Cambion</ion-select-option>
+					<ion-select-option value="Changeling">Changeling</ion-select-option>
+					<ion-select-option value="Draughir">Draughir</ion-select-option>
+					<ion-select-option value="Merrow">Merrow</ion-select-option>
+					<ion-select-option value="Naga">Naga</ion-select-option>
+				</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label>Virtue<span class="required">*</span></ion-label>
+				<ion-select placeholder="Select one" formControlName="Virtue">
+					<ion-select-option value="None">None</ion-select-option>
+					<ion-select-option value="Ambition">Ambition</ion-select-option>
+					<ion-select-option value="Courage">Courage</ion-select-option>
+					<ion-select-option value="Loyalty">Loyalty</ion-select-option>
+					<ion-select-option value="Pride">Pride</ion-select-option>
+					<ion-select-option value="Prosperity">Prosperity</ion-select-option>
+					<ion-select-option value="Vigilance">Vigilance</ion-select-option>
+					<ion-select-option value="Wisdon">Wisdom</ion-select-option>
+				</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label>Rank<span class="required">*</span></ion-label>
+				<ion-select placeholder="Select one" formControlName="Rank">
+					<ion-select-option value="0">Thane</ion-select-option>
+					<ion-select-option value="1">Head Advisor</ion-select-option>
+					<ion-select-option value="2">Stone Circle</ion-select-option>
+					<ion-select-option value="3">Guard</ion-select-option>
+					<ion-select-option value="4">Citizen</ion-select-option>
+					<ion-select-option value="5">Associate</ion-select-option>
+				</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label>Summary</ion-label>
+				<ion-textarea placeholder="A short summary of your character" autoGrow="true" maxlength="1000" rows="5"
+					formControlName="Summary">
+				</ion-textarea>
+			</ion-item>
+		</ion-list>
+
+		<ion-toolbar>
+			<ion-title>
+				Skills
+			</ion-title>
+		</ion-toolbar>
+
+		<ion-list>
+			<ion-item>
+				<ion-button fill="outline" (click)="OpenSkillsPopover()">Add Skill</ion-button>
+				<ion-button item-content *ngFor="let _Skill of CharacterSkills | skillSort" (click)="RemoveSkill(_Skill)">{{_Skill.Name}}<span
+						*ngIf="_Skill.Count > 1">&nbsp;x{{_Skill.Count}}</span>
+				</ion-button>
+			</ion-item>
+		</ion-list>
+
+		<ion-toolbar>
+			<ion-title>Story</ion-title>
+		</ion-toolbar>
+		<ion-list>
+			<ion-item>
+				<ion-label>Background</ion-label>
+				<ion-textarea placeholder="Story about your characters life" autoGrow="true"
+					formControlName="Background"></ion-textarea>
+			</ion-item>
+			<ion-item>
+				<ion-label>Name Story</ion-label>
+				<ion-textarea placeholder="How your character earned their name" autoGrow="true"
+					formControlName="NameStory"></ion-textarea>
+			</ion-item>
+			<ion-item>
+				<ion-label>Death Story</ion-label>
+				<ion-textarea placeholder="The tale of your characters death" autoGrow="true"
+					formControlName="DeathStory"></ion-textarea>
+			</ion-item>
+		</ion-list>
+	</form>
+</ion-content>

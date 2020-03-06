@@ -1,0 +1,19 @@
+<ion-content>
+	<div class="login">
+		<div class="logo">
+		</div>
+		<form [formGroup]="Login" (ngSubmit)="Submit()">
+			<ion-input type="email" formControlName="email" placeholder="Email" (keyup.enter)="Submit()"></ion-input>
+			<ion-input type="password" formControlName="password" placeholder="Password" (keyup.enter)="Submit()">
+			</ion-input>
+			<p><span routerLink="/password-recovery">Forgotten Password?</span></p>
+			<div class="buttons">
+				<ion-button type="submit">Login</ion-button>
+				<ion-button routerLink="/signup">Sign Up</ion-button>
+			</div>
+			<ion-item lines="none">
+				<p class="error">{{Error}}</p>
+			</ion-item>
+		</form>
+	</div>
+</ion-content>

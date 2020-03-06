@@ -1,0 +1,65 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>Character Viewer</ion-title>
+		<ion-buttons slot="end">
+			<ion-button (click)="DismissModal()">Close</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-card>
+		<ion-card-header>
+			<ion-card-title>{{Data.FirstName}} {{Data.LastName}}</ion-card-title>
+			<ion-card-subtitle>{{Data.EarnedName}}</ion-card-subtitle>
+		</ion-card-header>
+		<ion-card-content>
+			<ion-list>
+				<ion-item>
+					{{Data.Identity}}
+				</ion-item>
+				<ion-item>
+					Age: {{Data.Age}}
+				</ion-item>
+				<ion-item>
+					Gender: {{Data.Gender}}
+				</ion-item>
+				<ion-item>
+					Virtue: {{Data.Virtue}}
+				</ion-item>
+				<ion-item>
+					Lineage: {{Data.Lineage}}
+				</ion-item>
+				<ion-item>
+					<div class="skills" (click)="$event.stopPropagation()">
+						<ion-chip outline="true" *ngFor="let _Skill of Data.Skills" (click)="PresentSkillModal(_Skill)">
+							{{_Skill.Name}}<span *ngIf="_Skill.Count > 1">&nbsp;x{{_Skill.Count}}</span>
+						</ion-chip>
+					</div>
+				</ion-item>
+			</ion-list>
+			<p class="Description" *ngIf="Data.Alive">
+				{{Data.Summary}}
+			</p>
+			<p class="Description" *ngIf="!Data.Alive">
+				{{Data.DeathStory}}
+			</p>
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card>
+		<ion-card-header>
+			<ion-card-title>Background</ion-card-title>
+		</ion-card-header>
+		<ion-card-content [innerHTML]="Data.Details.Background">
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="Data.EarnedName">
+		<ion-card-header>
+			<ion-card-title>{{Data.EarnedName}}</ion-card-title>
+		</ion-card-header>
+		<ion-card-content [innerHTML]="Data.Details.NameStory">
+		</ion-card-content>
+	</ion-card>
+</ion-content>

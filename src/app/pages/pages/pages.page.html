@@ -1,0 +1,43 @@
+<app-header></app-header>
+
+<ion-content>
+	<ion-list>
+		<ion-item>
+			<ion-title color="secondary">Pages</ion-title>
+		</ion-item>
+		<ion-item lines="none">
+			<ion-text>Here you can see a list of all pages. To edit one, use the options menu; to create one, click Add. If you wish to delete one, contact Simon.</ion-text>
+		</ion-item>
+		<ion-item lines="none">
+			<ion-grid>
+				<ion-row class="Labels">
+					<ion-col>Title</ion-col>
+					<ion-col>Subtitle</ion-col>
+					<ion-col>Category</ion-col>
+					<ion-col>Author</ion-col>
+					<ion-col>Last Edited</ion-col>
+					<ion-col class="Options">Options</ion-col>
+				</ion-row>
+				<ion-row class="Data" *ngFor="let _Page of _DataService.PageData">
+					<ion-col>{{_Page.Title}}</ion-col>
+					<ion-col>{{_Page.Subtitle}}</ion-col>
+					<ion-col>{{_Page.Category}}</ion-col>
+					<ion-col>{{_Page.Author}}</ion-col>
+					<ion-col>{{_Page.LastEdited}}</ion-col>
+					<ion-col class="Options">
+						<ion-buttons>
+							<ion-button (click)="OpenOptions($event, _Page)">
+								<ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+							</ion-button>
+						</ion-buttons>
+					</ion-col>
+				</ion-row>
+				<ion-row *ngIf="_AuthService.UserData.Verified">
+					<ion-col>
+						<ion-button expand="block" (click)="OpenEditor()">Add</ion-button>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</ion-item>
+	</ion-list>
+</ion-content>
