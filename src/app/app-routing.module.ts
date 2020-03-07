@@ -46,10 +46,15 @@ const routes: Routes = [
 		path: 'signup',
 		loadChildren: () => import('./pages/signup/signup.module').then(m => m.SignupPageModule)
 	},
-  {
-    path: 'password-recovery',
-    loadChildren: () => import('./pages/password-recovery/password-recovery.module').then( m => m.PasswordRecoveryPageModule)
-  },
+	{
+		path: 'password-recovery',
+		loadChildren: () => import('./pages/password-recovery/password-recovery.module').then(m => m.PasswordRecoveryPageModule)
+	},
+	{
+		path: 'help',
+		loadChildren: () => import('./pages/help/help.module').then(m => m.HelpPageModule),
+		canActivate: [AuthGuard]
+	},
 ];
 
 @NgModule({
