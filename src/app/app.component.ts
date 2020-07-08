@@ -25,6 +25,11 @@ export class AppComponent implements OnInit {
 			url: '/pages',
 			icon: 'book'
 		},
+		{
+			title: 'Help',
+			url: '/help',
+			icon: 'help'
+		}
 		// {
 		// 	title: 'Players',
 		// 	url: '/players',

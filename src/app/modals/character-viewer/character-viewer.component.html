@@ -38,11 +38,9 @@
 					</div>
 				</ion-item>
 			</ion-list>
-			<p class="Description" *ngIf="Data.Alive">
-				{{Data.Summary}}
+			<p class="Description" *ngIf="Data.Alive" [innerHTML]="Data.Summary">
 			</p>
-			<p class="Description" *ngIf="!Data.Alive">
-				{{Data.DeathStory}}
+			<p class="Description" *ngIf="!Data.Alive" [innerHTML]="Data.DeathStory">
 			</p>
 		</ion-card-content>
 	</ion-card>
