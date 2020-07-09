@@ -214,7 +214,7 @@ export class CharacterEditorModal implements OnInit {
 	}
 
 	Submit() {
-		if (this.CharacterData.valid) {
+		if (this.CharacterData.valid && this.CheckSectionValidity()) {
 			this.Error = false;
 			let Data = this.CharacterData.value;
 
