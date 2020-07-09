@@ -1,0 +1,17 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>
+			Potion Categories
+		</ion-title>
+		<ion-buttons slot="end">
+			<ion-button icon-only (click)="Close()">
+				<ion-icon name="close-outline"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-button *ngFor="let _Category of PotionCategories | categorySort" expand="block" fill="clear"
+		(click)="Select(_Category)">{{_Category}}</ion-button>
+</ion-content>

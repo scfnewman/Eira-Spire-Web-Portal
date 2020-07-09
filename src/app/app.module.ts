@@ -36,6 +36,7 @@ import { SpellEditorModal } from  './modals/spell-editor/spell-editor.component'
 import { PotionViewerModal } from './modals/potion-viewer/potion-viewer.component'
 import { SkillViewerModal } from './modals/skill-viewer/skill-viewer.component'
 import { SpellViewerModal } from './modals/spell-viewer/spell-viewer.component'
+import { PotionCategoryPopoverComponent } from './components/potion-category-popover/potion-category-popover.component';
 
 @NgModule({
 	declarations: [
@@ -54,6 +55,7 @@ import { SpellViewerModal } from './modals/spell-viewer/spell-viewer.component'
 		SkillsPopoverComponent,
 		PotionsPopoverComponent,
 		SpellsPopoverComponent,
+		PotionCategoryPopoverComponent
 	],
 	entryComponents: [
 		CharacterEditorModal,
@@ -69,7 +71,8 @@ import { SpellViewerModal } from './modals/spell-viewer/spell-viewer.component'
 		OptionsPopoverComponent,
 		SkillsPopoverComponent,
 		PotionsPopoverComponent,
-		SpellsPopoverComponent
+		SpellsPopoverComponent,
+		PotionCategoryPopoverComponent
 	],
 	imports: [
 		BrowserModule,

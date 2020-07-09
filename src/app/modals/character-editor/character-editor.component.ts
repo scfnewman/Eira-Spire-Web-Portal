@@ -5,6 +5,7 @@ import { SkillsPopoverComponent } from 'src/app/components/skills-popover/skills
 import { PotionsPopoverComponent } from 'src/app/components/potions-popover/potions-popover.component';
 import { SpellsPopoverComponent } from 'src/app/components/spells-popover/spells-popover.component';
 import { DataService } from 'src/app/services/data.service';
+import { PotionCategoryPopoverComponent } from 'src/app/components/potion-category-popover/potion-category-popover.component';
 
 @Component({
 	selector: 'app-character-editor',
@@ -101,8 +102,7 @@ export class CharacterEditorModal implements OnInit {
 		})
 	}
 
-	async OpenPotionsPopover()
-	{
+	async OpenPotionsPopover() {
 		const Pop = await this._PopCtrl.create({
 			component: PotionsPopoverComponent
 		})
@@ -129,30 +129,26 @@ export class CharacterEditorModal implements OnInit {
 		})
 	}
 
-	async OpenPotionCategories()
-	{
+	async OpenPotionCategories() {
 		const Pop = await this._PopCtrl.create({
-			component: PotionsPopoverComponent
+			component: PotionCategoryPopoverComponent
 		})
 
 		await Pop.present();
 
 		return await Pop.onDidDismiss().then(Data => {
+			console.log(Data);
 			if (Data) {
 				if (!this.CharacterPotions)
 					this.CharacterPotions = new Array<any>();
 
-				for (let _Potion of this.CharacterPotions) {
-					if (_Potion.Name == Data.data.Name) {
-						return;
+				this._DataService.PotionData.forEach(Potion => {
+					if (Potion.Category == Data.data) {
+						if (!this.CharacterPotions.find(_Potion => {
+							if (Potion == _Potion) return true;
+						})) this.CharacterPotions.push(Potion);
 					}
-				}
-
-				let _Potion = {
-					"Name": Data.data.Name,
-				}
-
-				this.CharacterPotions.push(_Potion);
+				});
 			}
 		})
 	}
@@ -163,8 +159,7 @@ export class CharacterEditorModal implements OnInit {
 		})
 	}
 
-	async OpenSpellsPopover()
-	{
+	async OpenSpellsPopover() {
 		const Pop = await this._PopCtrl.create({
 			component: SpellsPopoverComponent
 		})
@@ -197,18 +192,16 @@ export class CharacterEditorModal implements OnInit {
 		})
 	}
 
-	IsMagician() : Boolean
-	{
-		if(this.CharacterSkills && this.CharacterSkills.filter(Skill => {
-			if(Skill.Name == "Magician") return Skill;
+	IsMagician(): Boolean {
+		if (this.CharacterSkills && this.CharacterSkills.filter(Skill => {
+			if (Skill.Name == "Magician") return Skill;
 		}).length > 0) return true;
 		return false;
 	}
 
-	IsApothecary() : Boolean
-	{
-		if(this.CharacterSkills && this.CharacterSkills.filter(Skill => {
-			if(Skill.Name == "Apothecary") return Skill;
+	IsApothecary(): Boolean {
+		if (this.CharacterSkills && this.CharacterSkills.filter(Skill => {
+			if (Skill.Name == "Apothecary") return Skill;
 		}).length > 0) return true;
 		return false;
 	}
