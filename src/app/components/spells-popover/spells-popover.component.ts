@@ -10,8 +10,8 @@ import { PopoverController } from '@ionic/angular';
 export class SpellsPopoverComponent implements OnInit {
 
 	constructor(
-		private _DataService: DataService,
-		private _PopCtrl: PopoverController
+		public _DataService: DataService,
+		public _PopCtrl: PopoverController
 	) { }
 
 	ngOnInit() { }

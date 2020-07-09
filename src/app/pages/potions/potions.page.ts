@@ -14,10 +14,10 @@ import { PotionEditorModal } from 'src/app/modals/potion-editor/potion-editor.co
 export class PotionsPage implements OnInit {
 
 	constructor(
-		private _DataService: DataService,
-		private _ModalCtrl: ModalController,
-		private _PopCtrl: PopoverController,
-		private _AuthService: AuthService
+		public _DataService: DataService,
+		public _ModalCtrl: ModalController,
+		public _PopCtrl: PopoverController,
+		public _AuthService: AuthService
 	) { }
 
 	ngOnInit() {

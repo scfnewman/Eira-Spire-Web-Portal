@@ -14,10 +14,10 @@ import { SkillEditorModal } from 'src/app/modals/skill-editor/skill-editor.compo
 export class SkillsPage implements OnInit {
 
 	constructor(
-		private _DataService: DataService,
-		private _ModalCtrl: ModalController,
-		private _PopCtrl: PopoverController,
-		private _AuthService: AuthService
+		public _DataService: DataService,
+		public _ModalCtrl: ModalController,
+		public _PopCtrl: PopoverController,
+		public _AuthService: AuthService
 	) { }
 
 	ngOnInit() {

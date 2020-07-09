@@ -53,7 +53,7 @@ export class AppComponent implements OnInit {
 	];
 
 	constructor(
-		private _AuthService: AuthService
+		public _AuthService: AuthService
 	) {}
 
 	ngOnInit() { }

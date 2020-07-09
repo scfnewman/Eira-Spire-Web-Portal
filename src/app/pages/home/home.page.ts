@@ -12,9 +12,9 @@ import { Platform } from '@ionic/angular';
 export class HomePage implements OnInit {
 
 	constructor(
-		private _ActivatedRoute: ActivatedRoute,
-		private _AuthService: AuthService,
-		private _Platform: Platform
+		public _ActivatedRoute: ActivatedRoute,
+		public _AuthService: AuthService,
+		public _Platform: Platform
 	) { }
 
 	ngOnInit() {

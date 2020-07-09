@@ -23,9 +23,9 @@ export class OptionsPopoverComponent implements OnInit {
 	@Input() Data: any;
 
 	constructor(
-		private _ModalCtrl: ModalController,
-		private _PopCtrl: PopoverController,
-		private _AuthService: AuthService
+		public _ModalCtrl: ModalController,
+		public _PopCtrl: PopoverController,
+		public _AuthService: AuthService
 	) { }
 
 	ngOnInit() { }

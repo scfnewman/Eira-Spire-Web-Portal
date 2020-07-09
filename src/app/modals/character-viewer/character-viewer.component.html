@@ -32,21 +32,21 @@
 				</ion-item>
 				<ion-item>
 					<div class="skills" (click)="$event.stopPropagation()">
-						<ion-chip outline="true" *ngFor="let _Skill of Data.Skills" (click)="PresentSkillModal(_Skill)">
+						<ion-chip outline="true" *ngFor="let _Skill of Data.Skills">
 							{{_Skill.Name}}<span *ngIf="_Skill.Count > 1">&nbsp;x{{_Skill.Count}}</span>
 						</ion-chip>
 					</div>
 				</ion-item>
 				<ion-item *ngIf="IsApothecary()">
 					<div class="potions" (click)="$event.stopPropagation()">
-						<ion-chip outline="true" *ngFor="let _Potion of Data.Potions" (click)="PresentPotionModal(_Potion)">
+						<ion-chip outline="true" *ngFor="let _Potion of Data.Potions">
 							{{_Potion.Name}}
 						</ion-chip>
 					</div>
 				</ion-item>
 				<ion-item *ngIf="IsMagician()">
 					<div class="spells" (click)="$event.stopPropagation()">
-						<ion-chip outline="true" *ngFor="let _Spell of Data.Spells" (click)="PresentSpellModal(_Spell)">
+						<ion-chip outline="true" *ngFor="let _Spell of Data.Spells">
 							{{_Spell.Name}}<span *ngIf="_Spell.Count > 1">&nbsp;x{{_Spell.Count}}</span>
 						</ion-chip>
 					</div>

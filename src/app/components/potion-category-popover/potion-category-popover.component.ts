@@ -12,8 +12,8 @@ export class PotionCategoryPopoverComponent implements OnInit {
 	PotionCategories: any[];
 
 	constructor(
-		private _DataService: DataService,
-		private _PopCtrl: PopoverController
+		public _DataService: DataService,
+		public _PopCtrl: PopoverController
 	) { 
 		this.PotionCategories = [];
 
