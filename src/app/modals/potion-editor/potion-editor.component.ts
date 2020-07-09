@@ -54,10 +54,10 @@ export class PotionEditorModal implements OnInit {
 				MechanicalEffect: Data.MechanicalEffect,
 				Recipe: Data.Recipe,
 				Notes: Data.Notes,
-				PageID: this.Data ? this.Data.PageID : Data.Name.replace(/\s/g, "-").toUpperCase()
+				PageID: (this.Data && this.Data.PageID) ? this.Data.PageID : Data.Name.replace(/\s/g, "-").toUpperCase()
 			}
 
-			if (this.Data) {
+			if (this.Data && this.Data.PageID) {
 				this._DataService.UpdatePotion(Details);
 			}
 			else {
