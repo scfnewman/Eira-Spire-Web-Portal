@@ -114,17 +114,13 @@ export class CharacterEditorModal implements OnInit {
 				if (!this.CharacterPotions)
 					this.CharacterPotions = new Array<any>();
 
-				for (let _Potion of this.CharacterPotions) {
-					if (_Potion.Name == Data.data.Name) {
-						return;
-					}
-				}
-
 				let _Potion = {
-					"Name": Data.data.Name,
+					"Name": Data.data.Name
 				}
 
-				this.CharacterPotions.push(_Potion);
+				if(!this.CharacterPotions.find(_P => {
+					if(_P.Name == _Potion.Name) return true
+				})) this.CharacterPotions.push(_Potion);
 			}
 		})
 	}
@@ -141,12 +137,12 @@ export class CharacterEditorModal implements OnInit {
 			if (Data) {
 				if (!this.CharacterPotions)
 					this.CharacterPotions = new Array<any>();
-
+				
 				this._DataService.PotionData.forEach(Potion => {
 					if (Potion.Category == Data.data) {
-						if (!this.CharacterPotions.find(_Potion => {
-							if (Potion == _Potion) return true;
-						})) this.CharacterPotions.push(Potion);
+						if (!this.CharacterPotions.find(_P => {
+							if (Potion.Name == _P.Name) return true;
+						})) this.CharacterPotions.push({"Name": Potion.Name});
 					}
 				});
 			}
@@ -171,17 +167,13 @@ export class CharacterEditorModal implements OnInit {
 				if (!this.CharacterSpells)
 					this.CharacterSpells = new Array<any>();
 
-				for (let _Spell of this.CharacterSpells) {
-					if (_Spell.Name == Data.data.Name) {
-						return;
-					}
-				}
-
 				let _Spell = {
-					"Name": Data.data.Name,
+					"Name": Data.data.Name
 				}
 
-				this.CharacterSpells.push(_Spell);
+				if(!this.CharacterSpells.find(_S => {
+					if(_S.Name == _Spell.Name) return true;
+				})) this.CharacterSpells.push(_Spell);
 			}
 		})
 	}
