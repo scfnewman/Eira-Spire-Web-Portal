@@ -1,0 +1,9 @@
+.Skill div {
+	display: flex;
+	flex-direction: column;
+
+	.Category {
+		font-size: xx-small;
+		color: gray;
+	}
+}
