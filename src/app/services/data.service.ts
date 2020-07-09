@@ -10,6 +10,8 @@ export class DataService {
 
 	CharacterData;
 	SkillData;
+	PotionData;
+	SpellData;
 	PageData;
 	UserData;
 
@@ -21,6 +23,12 @@ export class DataService {
 		});
 		this._FireStore.collection<any>('skills').valueChanges().subscribe(data => {
 			this.SkillData = data;
+		});
+		this._FireStore.collection<any>('potions').valueChanges().subscribe(data => {
+			this.PotionData = data;
+		});
+		this._FireStore.collection<any>('spells').valueChanges().subscribe(data => {
+			this.SpellData = data;
 		});
 		this._FireStore.collection<any>('pages').valueChanges().subscribe(data => {
 			this.PageData = data;
@@ -57,5 +65,29 @@ export class DataService {
 
 	UpdatePage(Data) {
 		this._FireStore.doc<any>('pages/' + Data.PageID).update(Data);
+	}
+
+	AddPotion(Data) {
+		this._FireStore.doc<any>('potions/' + Data.PageID).set(Data);
+	}
+
+	UpdatePotion(Data) {
+		this._FireStore.doc<any>('potions/' + Data.PageID).update(Data);
+	}
+
+	AddSkill(Data){
+		this._FireStore.doc<any>('skills/' + Data.PageID).set(Data);
+	}
+
+	UpdateSkill(Data){
+		this._FireStore.doc<any>('skills/' + Data.PageID).update(Data);
+	}
+
+	AddSpell(Data){
+		this._FireStore.doc<any>('spells/' + Data.PageID).set(Data);
+	}
+
+	UpdateSpell(Data){
+		this._FireStore.doc<any>('spells/' + Data.PageID).update(Data);
 	}
 }

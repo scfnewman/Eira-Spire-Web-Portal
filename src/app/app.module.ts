@@ -23,31 +23,56 @@ import { DataService } from './services/data.service';
 import { CharacterEditorModal } from './modals/character-editor/character-editor.component';
 import { OptionsPopoverComponent } from './components/options-popover/options-popover.component';
 import { SkillsPopoverComponent } from './components/skills-popover/skills-popover.component';
-import { SkillSortPipe } from './pipes/skill-sort.pipe';
 import { PageEditorModal } from './modals/page-editor/page-editor.component';
 import { DatePipe } from '@angular/common';
 import { CharacterViewerModal } from './modals/character-viewer/character-viewer.component';
 import { PageViewerModal } from './modals/page-viewer/page-viewer.component';
-
+import { PotionsPopoverComponent } from './components/potions-popover/potions-popover.component';
+import { SpellsPopoverComponent } from './components/spells-popover/spells-popover.component';
+import { PipesModule } from './pipes/pipes.module';
+import { PotionEditorModal } from './modals/potion-editor/potion-editor.component'
+import { SkillEditorModal } from './modals/skill-editor/skill-editor.component'
+import { SpellEditorModal } from  './modals/spell-editor/spell-editor.component'
+import { PotionViewerModal } from './modals/potion-viewer/potion-viewer.component'
+import { SkillViewerModal } from './modals/skill-viewer/skill-viewer.component'
+import { SpellViewerModal } from './modals/spell-viewer/spell-viewer.component'
+import { PotionCategoryPopoverComponent } from './components/potion-category-popover/potion-category-popover.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		CharacterEditorModal,
 		PageEditorModal,
+		PotionEditorModal,
+		SkillEditorModal,
+		SpellEditorModal,
 		CharacterViewerModal,
 		PageViewerModal,
+		PotionViewerModal,
+		SkillViewerModal,
+		SpellViewerModal,
 		OptionsPopoverComponent,
 		SkillsPopoverComponent,
-		SkillSortPipe,
+		PotionsPopoverComponent,
+		SpellsPopoverComponent,
+		PotionCategoryPopoverComponent
 	],
 	entryComponents: [
 		CharacterEditorModal,
 		PageEditorModal,
+		PotionEditorModal,
+		SkillEditorModal,
+		SpellEditorModal,
 		CharacterViewerModal,
 		PageViewerModal,
+		PotionViewerModal,
+		SkillViewerModal,
+		SpellViewerModal,
 		OptionsPopoverComponent,
 		SkillsPopoverComponent,
+		PotionsPopoverComponent,
+		SpellsPopoverComponent,
+		PotionCategoryPopoverComponent
 	],
 	imports: [
 		BrowserModule,
@@ -58,6 +83,7 @@ import { PageViewerModal } from './modals/page-viewer/page-viewer.component';
 		AngularFireModule.initializeApp(FirebaseConfig),
 		AngularFirestoreModule,
 		AngularFireAuthModule,
+		PipesModule
 	],
 	providers: [
 		StatusBar,

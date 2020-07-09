@@ -3,8 +3,8 @@
 		<ion-menu side="start" contentId="main-content">
 			<div class="logo"></div>
 			<ion-list lines="none">
-				<ion-item *ngFor="let p of appPages; let i = index" (click)="selectedIndex = i" routerDirection="root"
-					[routerLink]="[p.url]" detail="false" [class.selected]="selectedIndex == i">
+				<ion-item *ngFor="let p of appPages" routerDirection="root"
+					[routerLink]="[p.url]" detail="false">
 					<ion-icon [name]="p.icon + '-outline'"></ion-icon>
 				</ion-item>
 				<ion-item (click)="_AuthService.Logout()" detail="false" routerLink="/logout"

@@ -26,6 +26,7 @@ export class PageEditorModal implements OnInit {
 
 	ngOnInit() {
 		this.PageData = this._FormBuilder.group({
+			WIP: new FormControl((this.Data && this.Data.WIP) ? this.Data.WIP : null),
 			Title: new FormControl((this.Data && this.Data.Title) ? this.Data.Title : null, Validators.required),
 			Subtitle: new FormControl((this.Data && this.Data.Subtitle) ? this.Data.Subtitle : null),
 			Category: new FormControl((this.Data && this.Data.Category) ? this.Data.Category : null, Validators.required),
@@ -48,7 +49,7 @@ export class PageEditorModal implements OnInit {
 		if (this.PageData.valid && this.CheckSectionValidity) {
 			let SectionsData: any[] = [];
 
-			let PageID = (this.Data && this.Data.PageID) ? this.Data.PageID : (this.PageData.value.Title + "|" + this.PageData.value.Author + "|" + this._DatePipe.transform(Date.now())).replace(/\s/g, "-").toUpperCase();
+			let PageID = (this.Data && this.Data.PageID) ? this.Data.PageID : this.PageData.value.Title.replace(/\s/g, "-").toUpperCase();
 
 			this.PageSections.forEach(Section => {
 				let Data = {
@@ -60,6 +61,7 @@ export class PageEditorModal implements OnInit {
 			})
 
 			let Data = {
+				WIP: this.PageData.value.WIP,
 				Title: this.PageData.value.Title,
 				Subtitle: this.PageData.value.Subtitle,
 				Category: this.PageData.value.Category,

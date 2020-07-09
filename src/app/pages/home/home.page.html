@@ -8,8 +8,10 @@
 	</ion-list>
 	<div class="content">
 		<h3>Welcome to the Eira Spire web portal!</h3>
-		<p>Here you can add and alter Characters, Pages and other aspects of the Eira Spire App.</p>
+		<h1 *ngIf="_Platform.is('mobile')">This site is best viewed on desktop!</h1>
 		<h4>What's this for?</h4>
+		<p>On this site you can edit the content in the database behind the Eira Spire App.</p>
+		<h4>Why does this exist?</h4>
 		<p>As part of my new job I've been building Mobile Apps, and I had the idea that it would be cool for Eira Spire
 			to have an app that acts as an offical repository of information that newcomers to the Hall could download
 			and look at without having to give strangers the link to the OneNote.</p>
@@ -19,46 +21,56 @@
 			anyone.</p>
 		<p>This site is best viewed on Desktop. You can use a mobile web browser, but the interface is not designed with
 			that in mind.</p>
-		<p>If you encounter any issues or have any questions, contact Simon. Don't hesitate to offer suggestions for improvement</p>
+		<p>If you encounter any issues or have any questions, contact Simon. Don't hesitate to offer suggestions for
+			improvement</p>
 		<ion-card>
 			<ion-card-header>
 				<ion-card-title>Development</ion-card-title>
-				<ion-card-subtitle>You can follow the development or submit issues on the <a href="https://github.com/SmoothJazzAndChill/Eira-Spire-Web-Portal" target="_new">GitHub Repository</a></ion-card-subtitle>
+				<ion-card-subtitle>You can follow the development or submit issues on the <a
+						href="https://github.com/SmoothJazzAndChill/Eira-Spire-Web-Portal" target="_new">GitHub
+						Repository</a></ion-card-subtitle>
 			</ion-card-header>
 			<ion-card-content>
 				<h4>Upcoming Features</h4>
 				<ul>
 					<li>Profile Settings</li>
-					<li>Pre-defined Categories</li>
+					<li>Pre-defined Page Categories</li>
 					<li>"Branded" password reset and email verification pages</li>
 					<li>App style page and character viewers</li>
-					<li>Character Potions Selection</li>
-					<li>Character Spell Selection</li>
-					<li>Character Sections</li>
 					<li>Mobile Web Browser interface pass</li>
+					<li>Rich text editors</li>
 				</ul>
 				<h4>Known Issues</h4>
 				<ul>
-					<li>Text boxes are narrow after the first time they are loaded
-						<ul>
-							<li>To fix this, click on the text box and press any key. This is an issue with the
-								framework,
-								so it won't be fixed until I find a workaround</li>
-						</ul>
-					</li>
 					<li>
 						Some buttons don't work properly on mobile web browsers
+					</li>
+					<li>
+						Using mouse scroll in skills/potions/spells popover window doesn't work
 					</li>
 				</ul>
 
 				<h4>Change Log</h4>
 				<ul>
 					<li>
+						<h3>v.1.1.0</h3>
+						<ul>
+							<li>Added: Potion Selection, Page, & Editor</li>
+							<li>Added: Spell Selection, Page, & Editor</li>
+							<li>Added: Skill Page & Editor</li>
+							<li>Changed: Made improvements to editor layout</li>
+							<li>Changed: Skills now in Categories</li>
+							<li>Fixed: Text areas being too small in editors</li>
+						</ul>
+					</li>
+
+					<li>
 						<h3>v.1.0.3</h3>
 						<ul>
 							<li>Added: Help page</li>
 						</ul>
 					</li>
+
 					<li>
 						<h3>v.1.0.2</h3>
 						<ul>
@@ -66,6 +78,7 @@
 							<li>Fixed: Death Story content not rendering HTML</li>
 						</ul>
 					</li>
+
 					<li>
 						<h3>v.1.0.1</h3>
 						<ul>

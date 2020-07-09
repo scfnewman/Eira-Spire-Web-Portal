@@ -2,7 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ModalController, PopoverController } from '@ionic/angular';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { SkillsPopoverComponent } from 'src/app/components/skills-popover/skills-popover.component';
+import { PotionsPopoverComponent } from 'src/app/components/potions-popover/potions-popover.component';
+import { SpellsPopoverComponent } from 'src/app/components/spells-popover/spells-popover.component';
 import { DataService } from 'src/app/services/data.service';
+import { PotionCategoryPopoverComponent } from 'src/app/components/potion-category-popover/potion-category-popover.component';
 
 @Component({
 	selector: 'app-character-editor',
@@ -15,6 +18,9 @@ export class CharacterEditorModal implements OnInit {
 
 	CharacterData: FormGroup;
 	CharacterSkills: Array<any>;
+	CharacterPotions: Array<any>;
+	CharacterSpells: Array<any>;
+	CharacterSections: FormGroup[] = [];
 	Error: boolean = false;
 
 	constructor(
@@ -43,6 +49,14 @@ export class CharacterEditorModal implements OnInit {
 			DeathStory: new FormControl((this.Data && this.Data.DeathStory) ? this.Data.DeathStory : null),
 		})
 		this.CharacterSkills = this.Data && this.Data.Skills ? this.Data.Skills : null;
+		this.CharacterPotions = this.Data && this.Data.Potions ? this.Data.Potions : null;
+		this.CharacterSpells = this.Data && this.Data.Spells ? this.Data.Spells : null;
+
+		if (this.Data && this.Data.Sections) {
+			this.Data.Sections.forEach(Section => {
+				this.AddSection(Section.Heading, Section.Body);
+			})
+		}
 	}
 
 	DismissModal() {
@@ -88,10 +102,125 @@ export class CharacterEditorModal implements OnInit {
 		})
 	}
 
+	async OpenPotionsPopover() {
+		const Pop = await this._PopCtrl.create({
+			component: PotionsPopoverComponent
+		})
+
+		await Pop.present();
+
+		return await Pop.onDidDismiss().then(Data => {
+			if (Data) {
+				if (!this.CharacterPotions)
+					this.CharacterPotions = new Array<any>();
+
+				for (let _Potion of this.CharacterPotions) {
+					if (_Potion.Name == Data.data.Name) {
+						return;
+					}
+				}
+
+				let _Potion = {
+					"Name": Data.data.Name,
+				}
+
+				this.CharacterPotions.push(_Potion);
+			}
+		})
+	}
+
+	async OpenPotionCategories() {
+		const Pop = await this._PopCtrl.create({
+			component: PotionCategoryPopoverComponent
+		})
+
+		await Pop.present();
+
+		return await Pop.onDidDismiss().then(Data => {
+			console.log(Data);
+			if (Data) {
+				if (!this.CharacterPotions)
+					this.CharacterPotions = new Array<any>();
+
+				this._DataService.PotionData.forEach(Potion => {
+					if (Potion.Category == Data.data) {
+						if (!this.CharacterPotions.find(_Potion => {
+							if (Potion == _Potion) return true;
+						})) this.CharacterPotions.push(Potion);
+					}
+				});
+			}
+		})
+	}
+
+	RemovePotion(_Potion) {
+		this.CharacterPotions = this.CharacterPotions.filter(Potion => {
+			if (Potion != _Potion) return Potion;
+		})
+	}
+
+	async OpenSpellsPopover() {
+		const Pop = await this._PopCtrl.create({
+			component: SpellsPopoverComponent
+		})
+
+		await Pop.present();
+
+		return await Pop.onDidDismiss().then(Data => {
+			if (Data) {
+				if (!this.CharacterSpells)
+					this.CharacterSpells = new Array<any>();
+
+				for (let _Spell of this.CharacterSpells) {
+					if (_Spell.Name == Data.data.Name) {
+						return;
+					}
+				}
+
+				let _Spell = {
+					"Name": Data.data.Name,
+				}
+
+				this.CharacterSpells.push(_Spell);
+			}
+		})
+	}
+
+	RemoveSpell(_Spell) {
+		this.CharacterSpells = this.CharacterSpells.filter(Spell => {
+			if (Spell != _Spell) return Spell;
+		})
+	}
+
+	IsMagician(): Boolean {
+		if (this.CharacterSkills && this.CharacterSkills.filter(Skill => {
+			if (Skill.Name == "Magician") return Skill;
+		}).length > 0) return true;
+		return false;
+	}
+
+	IsApothecary(): Boolean {
+		if (this.CharacterSkills && this.CharacterSkills.filter(Skill => {
+			if (Skill.Name == "Apothecary") return Skill;
+		}).length > 0) return true;
+		return false;
+	}
+
 	Submit() {
-		if (this.CharacterData.valid) {
+		if (this.CharacterData.valid && this.CheckSectionValidity()) {
 			this.Error = false;
 			let Data = this.CharacterData.value;
+
+			let SectionsData: any[] = [];
+
+			this.CharacterSections.forEach(Section => {
+				let Data = {
+					Heading: Section.value.Heading,
+					Body: Section.value.Body
+				}
+
+				SectionsData.push(Data);
+			})
 
 			let Details = {
 				Alive: Data.Alive,
@@ -112,7 +241,10 @@ export class CharacterEditorModal implements OnInit {
 				},
 				DeathStory: Data.DeathStory,
 				Skills: this.CharacterSkills,
-				PageID: this.Data ? this.Data.PageID : Data.FirstName + Data.LastName
+				Potions: this.CharacterPotions,
+				Spells: this.CharacterSpells,
+				Sections: SectionsData,
+				PageID: this.Data ? this.Data.PageID : (Data.FirstName + "-" + Data.LastName).toUpperCase()
 			}
 
 			if (this.Data) {
@@ -127,5 +259,32 @@ export class CharacterEditorModal implements OnInit {
 		else {
 			this.Error = true;
 		}
+	}
+
+	AddSection(_Heading?: string, _Body?: string) {
+		let NewSection = this._FormBuilder.group({
+			Heading: new FormControl(_Heading ? _Heading : null, Validators.required),
+			Body: new FormControl(_Body ? _Body : null)
+		})
+
+		this.CharacterSections.push(NewSection);
+	}
+
+	DeleteSection(_Index) {
+		let del = this.CharacterSections[_Index];
+
+		this.CharacterSections = this.CharacterSections.filter(Section => {
+			if (Section != del) return Section;
+		})
+	}
+
+	CheckSectionValidity(): boolean {
+		let ValidSections: boolean = true;
+
+		this.CharacterSections.forEach(Section => {
+			if (Section.invalid) ValidSections = false;;
+		});
+
+		return ValidSections;
 	}
 }

@@ -49,6 +49,10 @@ ion-modal {
 	--min-width: 70vw!important;
 }
 
+ion-popover {
+	--width: 350px!important;
+}
+
 .required {
 	color: var(--ion-color-danger);
 }

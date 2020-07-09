@@ -17,3 +17,11 @@ ion-textarea {
 	border: 1px solid rgba(var(--ion-color-secondary-rgb), 0.2);
 	border-radius: 5px;
 }
+
+.TextEntry {
+	display:flex;
+	flex-direction: column;
+	width: 100%;
+	justify-content: left;
+	margin-top: 10px;
+}

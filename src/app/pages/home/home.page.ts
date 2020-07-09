@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
+import { Platform } from '@ionic/angular';
 
 @Component({
 	selector: 'app-home',
@@ -11,11 +12,11 @@ import { DataService } from 'src/app/services/data.service';
 export class HomePage implements OnInit {
 
 	constructor(
-		private _ActivatedRoute: ActivatedRoute,
-		private _AuthService: AuthService
+		public _ActivatedRoute: ActivatedRoute,
+		public _AuthService: AuthService,
+		public _Platform: Platform
 	) { }
 
 	ngOnInit() {
-
 	}
 }

@@ -20,4 +20,20 @@ export class CharacterViewerModal implements OnInit {
 		this._ModalCtrl.dismiss();
 	}
 
+	IsMagician() : Boolean
+	{
+		if(this.Data.Skills && this.Data.Skills.filter(Skill => {
+			if(Skill.Name == "Magician") return Skill;
+		}).length > 0) return true;
+		return false;
+	}
+
+	IsApothecary() : Boolean
+	{
+		if(this.Data.Skills && this.Data.Skills.filter(Skill => {
+			if(Skill.Name == "Apothecary") return Skill;
+		}).length > 0) return true;
+		return false;
+	}
+
 }

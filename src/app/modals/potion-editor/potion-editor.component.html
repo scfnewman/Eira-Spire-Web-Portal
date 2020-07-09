@@ -1,0 +1,110 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>
+			Potion Editor
+		</ion-title>
+		<ion-buttons slot="end">
+			<ion-text *ngIf="Error" color="danger">Please fill in the required fields before saving!</ion-text>
+			<ion-button (click)="Submit()">Save</ion-button>
+			<ion-button (click)="DismissModal()">Exit</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<form [formGroup]="PotionData">
+		<ion-toolbar>
+			<ion-title>
+				Details
+			</ion-title>
+		</ion-toolbar>
+		<ion-list>
+			<ion-item>
+				<ion-label>Category<span class="required">*</span></ion-label>
+				<ion-select placeholder="Select one" formControlName="Category">
+					<ion-select-option value="Apothecary Potions">Apothecary Potions</ion-select-option>
+					<ion-select-option value="Balms of the Fountainhead">Balms of the Fountainhead</ion-select-option>
+					<ion-select-option value="Decoctions of Hoarfrost">Decoctions of Hoarfrost</ion-select-option>
+					<ion-select-option value="Double-sided Blade">Double-sided Blade</ion-select-option>
+					<ion-select-option value="Infusions of Feathers">Infusions of Feathers</ion-select-option>
+					<ion-select-option value="Lambent Essences">Lambent Essences</ion-select-option>
+					<ion-select-option value="Legacy of Thorns">Legacy of Thorns</ion-select-option>
+					<ion-select-option value="Magnum Opus">Magnum Opus</ion-select-option>
+					<ion-select-option value="Master Medicinal">Master Medicinal</ion-select-option>
+					<ion-select-option value="Philtres of the High Peaks">Philtres of the High Peaks</ion-select-option>
+					<ion-select-option value="Philtres of War">Philtres of War</ion-select-option>
+					<ion-select-option value="The Assassin's Gate">The Assassin's Gate</ion-select-option>
+					<ion-select-option value="The Last Resort">The Last Resort</ion-select-option>
+					<ion-select-option value="The Winter Moon">The Winter Moon</ion-select-option>
+					<ion-select-option value="Tisanes of the Labyrinth">Tisanes of the Labyrinth</ion-select-option>
+					<ion-select-option value="Tonics of the Deep Forest">Tonics of the Deep Forest</ion-select-option>
+					<ion-select-option value="Tonics of the Open Sky">Tonics of the Open Sky</ion-select-option>
+					<ion-select-option value="Tinctures of True Eminence">Tinctures of True Eminence</ion-select-option>
+					<ion-select-option value="Unguents of Falling Leaves">Unguents of Falling Leaves</ion-select-option>
+					<ion-select-option value="Unshackled Gift">Unshackled Gift</ion-select-option>
+				</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label>Name<span class="required">*</span></ion-label>
+				<ion-input placeholder="Potion Name" formControlName="Name"></ion-input>
+			</ion-item>
+			<ion-item>
+				<div class="TextEntry">
+					<ion-label>Definition<span class="required">*</span></ion-label>
+					<ion-textarea placeholder="The long bit of text after the name" autoGrow="true"
+						formControlName="Definition">
+					</ion-textarea>
+				</div>
+			</ion-item>
+			<ion-item>
+				<ion-label>Form<span class="required">*</span></ion-label>
+				<ion-select placeholder="Select one" formControlName="Form">
+					<ion-select-option value="Philtre">Philtre</ion-select-option>
+					<ion-select-option value="Salve">Salve</ion-select-option>
+					<ion-select-option value="Liquid">Liquid</ion-select-option>
+					<ion-select-option value="Infusion">Infusion</ion-select-option>
+					<ion-select-option value="Oil">Oil</ion-select-option>
+				</ion-select>
+			</ion-item>
+			<ion-item>
+				<div class="TextEntry">
+					<ion-label>Description<span class="required">*</span></ion-label>
+					<ion-textarea placeholder="What does the potion look/smell/taste like" autoGrow="true"
+						formControlName="Description">
+					</ion-textarea>
+				</div>
+			</ion-item>
+			<ion-item>
+				<div class="TextEntry">
+					<ion-label>Roleplaying Effect<span class="required">*</span></ion-label>
+					<ion-textarea placeholder="The effect on the character" autoGrow="true"
+						formControlName="RoleplayingEffect">
+					</ion-textarea>
+				</div>
+			</ion-item>
+			<ion-item>
+				<div class="TextEntry">
+					<ion-label>MechanicalEffect<span class="required">*</span></ion-label>
+					<ion-textarea placeholder="The effect on the game" autoGrow="true"
+						formControlName="MechanicalEffect">
+					</ion-textarea>
+				</div>
+			</ion-item>
+			<ion-item>
+				<div class="TextEntry">
+					<ion-label>Recipe<span class="required">*</span></ion-label>
+					<ion-textarea placeholder="What is it made of" autoGrow="true" formControlName="Recipe">
+					</ion-textarea>
+				</div>
+			</ion-item>
+			<ion-item>
+				<div class="TextEntry">
+					<ion-label>Notes</ion-label>
+					<ion-textarea placeholder="Anything important to know about the potion" autoGrow="true"
+						formControlName="Notes">
+					</ion-textarea>
+				</div>
+			</ion-item>
+		</ion-list>
+	</form>
+</ion-content>

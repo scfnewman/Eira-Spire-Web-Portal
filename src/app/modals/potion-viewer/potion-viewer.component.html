@@ -1,0 +1,47 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>Potion Viewer</ion-title>
+		<ion-buttons slot="end">
+			<ion-button (click)="DismissModal()">Close</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-card>
+		<ion-card-header>
+			<ion-card-title>{{Data.Name}}</ion-card-title>
+			<ion-card-subtitle>{{Data.Category}}</ion-card-subtitle>
+		</ion-card-header>
+		<ion-card-content>
+			<p [innerHTML]="Data.Definition"></p>
+
+			<ion-list>
+				<ion-item>
+					{{Data.Form}}
+				</ion-item>
+				<ion-item>
+					<div [innerHTML]="Data.Description"></div>
+				</ion-item>
+				<ion-item>
+					<div [innerHTML]="Data.RoleplayingEffect"></div>
+				</ion-item>
+				<ion-item>
+					<div [innerHTML]="Data.MechanicalEffect"></div>
+				</ion-item>
+				<ion-item>
+					<div [innerHTML]="Data.Recipe"></div>
+				</ion-item>
+			</ion-list>
+		</ion-card-content>
+	</ion-card>
+
+
+	<ion-card *ngIf="Data.Notes">
+		<ion-card-header>
+			<ion-card-title>Notes</ion-card-title>
+		</ion-card-header>
+		<ion-card-content [innerHTML]="Data.Notes">
+		</ion-card-content>
+	</ion-card>
+</ion-content>

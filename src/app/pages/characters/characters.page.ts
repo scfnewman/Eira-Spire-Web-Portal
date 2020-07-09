@@ -14,10 +14,10 @@ import { AuthService } from 'src/app/services/auth.service';
 export class CharactersPage implements OnInit {
 
 	constructor(
-		private _DataService: DataService,
-		private _ModalCtrl: ModalController,
-		private _PopCtrl: PopoverController,
-		private _AuthService: AuthService
+		public _DataService: DataService,
+		public _ModalCtrl: ModalController,
+		public _PopCtrl: PopoverController,
+		public _AuthService: AuthService
 	) { }
 
 	ngOnInit() {

@@ -10,8 +10,9 @@ export class SkillSortPipe implements PipeTransform {
 		if (!_Skills) return null;
 
 		return _Skills.sort((a, b) => {
+			if (a.Category > b.Category) return 1;
+			if (a.Category != b.Category) return -1;
 			if (a.Name > b.Name) return 1;
-			if (a.Name == b.Name) return 0;
 			return -1;
 		})
 	}

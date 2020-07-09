@@ -55,6 +55,21 @@ const routes: Routes = [
 		loadChildren: () => import('./pages/help/help.module').then(m => m.HelpPageModule),
 		canActivate: [AuthGuard]
 	},
+	{
+		path: 'potions',
+		loadChildren: () => import('./pages/potions/potions.module').then(m => m.PotionsPageModule),
+		canActivate: [AuthGuard]
+	},
+	{
+		path: 'spells',
+		loadChildren: () => import('./pages/spells/spells.module').then(m => m.SpellsPageModule),
+		canActivate: [AuthGuard]
+	},
+	{
+		path: 'skills',
+		loadChildren: () => import('./pages/skills/skills.module').then(m => m.SkillsPageModule),
+		canActivate: [AuthGuard]
+	},
 ];
 
 @NgModule({

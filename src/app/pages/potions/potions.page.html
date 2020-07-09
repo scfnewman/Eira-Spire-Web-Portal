@@ -1,0 +1,41 @@
+<app-header></app-header>
+
+<ion-content>
+	<ion-list>
+		<ion-item>
+			<ion-title color="secondary">Potions</ion-title>
+		</ion-item>
+		<ion-item lines="none">
+			<ion-text>Here you can see a list of all potions. To edit one, use the options menu; to add one, click Add. If you wish to delete one, contact Simon.</ion-text>
+		</ion-item>
+		<ion-item lines="none">
+			<ion-grid>
+				<ion-row class="Labels">
+					<ion-col class="Category">Category</ion-col>
+					<ion-col class="Name">Name</ion-col>
+					<ion-col class="Form">Form</ion-col>
+					<ion-col></ion-col>
+					<ion-col class="Options">Options</ion-col>
+				</ion-row>
+				<ion-row class="Potions" *ngFor="let _Potion of _DataService.PotionData | skillSort">
+					<ion-col class="Category">{{_Potion.Category}}</ion-col>
+					<ion-col class="Name">{{_Potion.Name}}</ion-col>
+					<ion-col class="Form">{{_Potion.Form}}</ion-col>
+					<ion-col></ion-col>
+					<ion-col class="Options">
+						<ion-buttons>
+							<ion-button (click)="OpenOptions($event, _Potion)">
+								<ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+							</ion-button>
+						</ion-buttons>
+					</ion-col>
+				</ion-row>
+				<ion-row *ngIf="_AuthService.UserData.Verified">
+					<ion-col>
+						<ion-button expand="block" (click)="OpenEditor()">Add</ion-button>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</ion-item>
+	</ion-list>
+</ion-content>
