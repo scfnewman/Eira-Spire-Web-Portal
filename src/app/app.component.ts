@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
 		{
 			title: 'Characters',
 			url: '/characters',
-			icon: 'list'
+			icon: 'people'
 		},
 		{
 			title: 'Pages',
@@ -26,15 +26,25 @@ export class AppComponent implements OnInit {
 			icon: 'book'
 		},
 		{
+			title: 'Skills',
+			url: '/skills',
+			icon: 'brush'
+		},
+		{
+			title: 'Potions',
+			url: '/potions',
+			icon: 'flask'
+		},
+		{
+			title: 'Spells',
+			url: '/spells',
+			icon: 'flame'
+		},
+		{
 			title: 'Help',
 			url: '/help',
 			icon: 'help'
 		}
-		// {
-		// 	title: 'Players',
-		// 	url: '/players',
-		// 	icon: 'person'
-		// },
 		// {
 		// 	title: 'Settings',
 		// 	url: '/settings',

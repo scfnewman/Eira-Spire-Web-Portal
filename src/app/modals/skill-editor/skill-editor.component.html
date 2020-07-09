@@ -1,0 +1,50 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>
+			Skill Editor
+		</ion-title>
+		<ion-buttons slot="end">
+			<ion-text *ngIf="Error" color="danger">Please fill in the required fields before saving!</ion-text>
+			<ion-button (click)="Submit()">Save</ion-button>
+			<ion-button (click)="DismissModal()">Exit</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<form [formGroup]="SkillData">
+		<ion-toolbar>
+			<ion-title>
+				Details
+			</ion-title>
+		</ion-toolbar>
+		<ion-list>
+			<ion-item>
+				<ion-label>Category<span class="required">*</span></ion-label>
+				<ion-select placeholder="Select one" formControlName="Category">
+					<ion-select-option value="Combat">Combat</ion-select-option>
+					<ion-select-option value="Heroic">Heroic</ion-select-option>
+					<ion-select-option value="Magical">Magical</ion-select-option>
+					<ion-select-option value="Crafting">Crafting</ion-select-option>
+					<ion-select-option value="Surgical">Surgical</ion-select-option>
+					<ion-select-option value="Religious">Religious</ion-select-option>
+				</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label>Name<span class="required">*</span></ion-label>
+				<ion-input placeholder="Skill name" formControlName="Name"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Cost<span class="required">*</span></ion-label>
+				<ion-input placeholder="1" formControlName="Cost" type="number"></ion-input>
+			</ion-item>
+			<ion-item>
+				<div class="TextEntry">
+					<ion-label>Description<span class="required">*</span></ion-label>
+					<ion-textarea placeholder="Describe the skill" autoGrow="true" formControlName="Description">
+					</ion-textarea>
+				</div>
+			</ion-item>
+		</ion-list>
+	</form>
+</ion-content>

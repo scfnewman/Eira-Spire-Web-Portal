@@ -98,10 +98,12 @@
 				</ion-select>
 			</ion-item>
 			<ion-item>
-				<ion-label>Summary</ion-label>
-				<ion-textarea placeholder="A short summary of your character" autoGrow="true" maxlength="1000" rows="5"
-					formControlName="Summary">
-				</ion-textarea>
+				<div class="TextEntry">
+					<ion-label>Summary</ion-label>
+					<ion-textarea placeholder="A short summary of your character" autoGrow="true" maxlength="1000"
+						rows="5" formControlName="Summary">
+					</ion-textarea>
+				</div>
 			</ion-item>
 		</ion-list>
 
@@ -113,32 +115,98 @@
 
 		<ion-list>
 			<ion-item>
-				<ion-button fill="outline" (click)="OpenSkillsPopover()">Add Skill</ion-button>
-				<ion-button item-content *ngFor="let _Skill of CharacterSkills | skillSort" (click)="RemoveSkill(_Skill)">{{_Skill.Name}}<span
-						*ngIf="_Skill.Count > 1">&nbsp;x{{_Skill.Count}}</span>
-				</ion-button>
+				<div class="Skills">
+					<ion-button fill="outline" (click)="OpenSkillsPopover()">Add Skill</ion-button>
+					<ion-button item-content *ngFor="let _Skill of CharacterSkills | skillSort"
+						(click)="RemoveSkill(_Skill)">{{_Skill.Name}}<span
+							*ngIf="_Skill.Count > 1">&nbsp;x{{_Skill.Count}}</span>
+					</ion-button>
+				</div>
 			</ion-item>
 		</ion-list>
+
+		<ng-container *ngIf="IsApothecary()">
+			<ion-toolbar>
+				<ion-title>Potions</ion-title>
+			</ion-toolbar>
+
+			<ion-list>
+				<ion-item>
+					<div class="Skills">
+						<ion-button fill="outline" (click)="OpenPotionsPopover()">Add Potion</ion-button>
+						<ion-button fill="outline" (click)="OpenPotionCategories()">Add Potion Category</ion-button>
+						<ion-button item-content *ngFor="let _Potion of CharacterPotions | skillSort"
+							(click)="RemovePotion(_Potion)">{{_Potion.Name}}
+						</ion-button>
+					</div>
+				</ion-item>
+			</ion-list>
+		</ng-container>
+
+		<ng-container *ngIf="IsMagician()">
+			<ion-toolbar>
+				<ion-title>Spells</ion-title>
+			</ion-toolbar>
+
+			<ion-list>
+				<ion-item>
+					<div class="Skills">
+						<ion-button fill="outline" (click)="OpenSpellsPopover()">Add Spell</ion-button>
+						<ion-button item-content *ngFor="let _Spell of CharacterSpells | skillSort"
+							(click)="RemoveSpell(_Spell)">{{_Spell.Name}}
+						</ion-button>
+					</div>
+				</ion-item>
+			</ion-list>
+		</ng-container>
 
 		<ion-toolbar>
 			<ion-title>Story</ion-title>
 		</ion-toolbar>
 		<ion-list>
 			<ion-item>
-				<ion-label>Background</ion-label>
-				<ion-textarea placeholder="Story about your characters life" autoGrow="true"
-					formControlName="Background"></ion-textarea>
+				<div class="TextEntry">
+					<ion-label>Background</ion-label>
+					<ion-textarea placeholder="Story about your characters life" autoGrow="true"
+						formControlName="Background"></ion-textarea>
+				</div>
 			</ion-item>
 			<ion-item>
-				<ion-label>Name Story</ion-label>
-				<ion-textarea placeholder="How your character earned their name" autoGrow="true"
-					formControlName="NameStory"></ion-textarea>
+				<div class="TextEntry">
+					<ion-label>Name Story</ion-label>
+					<ion-textarea placeholder="How your character earned their name" autoGrow="true"
+						formControlName="NameStory"></ion-textarea>
+				</div>
 			</ion-item>
 			<ion-item>
-				<ion-label>Death Story</ion-label>
-				<ion-textarea placeholder="The tale of your characters death" autoGrow="true"
-					formControlName="DeathStory"></ion-textarea>
+				<div class="TextEntry">
+					<ion-label>Death Story</ion-label>
+					<ion-textarea placeholder="The tale of your characters death" autoGrow="true"
+						formControlName="DeathStory"></ion-textarea>
+				</div>
 			</ion-item>
 		</ion-list>
 	</form>
+
+	<ion-toolbar>
+		<ion-title>
+			Sections
+		</ion-title>
+	</ion-toolbar>
+	<form *ngFor="let _Section of CharacterSections; index as i" [formGroup]="CharacterSections[i]">
+		<ion-list class="Section" lines="none">
+			<ion-item>
+				<ion-input placeholder="Heading" formControlName="Heading"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-textarea placeholder="Body" autoGrow="true" formControlName="Body"></ion-textarea>
+			</ion-item>
+			<ion-item>
+				<ion-button fill="outline" expand="block" (click)="DeleteSection(i)">Delete Section</ion-button>
+			</ion-item>
+		</ion-list>
+	</form>
+	<ion-item>
+		<ion-button expand="block" (click)="AddSection()">New Section</ion-button>
+	</ion-item>
 </ion-content>

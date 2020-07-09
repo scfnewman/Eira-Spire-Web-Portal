@@ -20,6 +20,10 @@
 		</ion-toolbar>
 		<ion-list>
 			<ion-item>
+				<ion-label>Work In Progress</ion-label>
+				<ion-checkbox formControlName="WIP"></ion-checkbox>
+			</ion-item>
+			<ion-item>
 				<ion-label>Title<span class="required">*</span></ion-label>
 				<ion-input placeholder="Title" formControlName="Title"></ion-input>
 			</ion-item>
@@ -36,8 +40,10 @@
 				<ion-input placeholder="Author" formControlName="Author"></ion-input>
 			</ion-item>
 			<ion-item>
-				<ion-label>Body</ion-label>
-				<ion-textarea placeholder="Body" autoGrow="true" formControlName="Body"></ion-textarea>
+				<div class="TextEntry">
+					<ion-label>Body</ion-label>
+					<ion-textarea placeholder="Body" autoGrow="true" formControlName="Body"></ion-textarea>
+				</div>
 			</ion-item>
 		</ion-list>
 	</form>

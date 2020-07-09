@@ -1,0 +1,26 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>
+			Potions
+		</ion-title>
+		<ion-buttons slot="end">
+			<ion-button icon-only (click)="Close()">
+				<ion-icon name="close-outline"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-button class="Potion" *ngFor="let _Potion of _DataService.PotionData | skillSort" expand="block" fill="clear"
+		(click)="Select(_Potion)">
+		<div>
+			<span class="Name">
+				{{_Potion.Name}}
+			</span>
+			<span class="Category">
+				{{_Potion.Category}}
+			</span>
+		</div>
+	</ion-button>
+</ion-content>

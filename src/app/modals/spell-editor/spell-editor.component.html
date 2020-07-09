@@ -1,0 +1,54 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>
+			Spell Editor
+		</ion-title>
+		<ion-buttons slot="end">
+			<ion-text *ngIf="Error" color="danger">Please fill in the required fields before saving!</ion-text>
+			<ion-button (click)="Submit()">Save</ion-button>
+			<ion-button (click)="DismissModal()">Exit</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<form [formGroup]="SpellData">
+		<ion-toolbar>
+			<ion-title>
+				Details
+			</ion-title>
+		</ion-toolbar>
+		<ion-list>
+			<ion-item>
+				<ion-label>Category<span class="required">*</span></ion-label>
+				<ion-select placeholder="Select one" formControlName="Category">
+					<ion-select-option value="Common">Common</ion-select-option>
+					<ion-select-option value="Offensive">Offensive</ion-select-option>
+					<ion-select-option value="Ritual">Ritual</ion-select-option>
+				</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label>Name<span class="required">*</span></ion-label>
+				<ion-input placeholder="Spell name" formControlName="Name"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Cost<span class="required">*</span></ion-label>
+				<ion-input placeholder="1" formControlName="Cost" type="number"></ion-input>
+			</ion-item>
+			<ion-item>
+				<div class="TextEntry">
+					<ion-label>Description<span class="required">*</span></ion-label>
+					<ion-textarea placeholder="Describe the spell" autoGrow="true" formControlName="Description">
+					</ion-textarea>
+				</div>
+			</ion-item>
+			<ion-item>
+				<div class="TextEntry">
+					<ion-label>Effects<span class="required">*</span></ion-label>
+					<ion-textarea placeholder="What does the spell do" autoGrow="true" formControlName="Effects">
+					</ion-textarea>
+				</div>
+			</ion-item>
+		</ion-list>
+	</form>
+</ion-content>

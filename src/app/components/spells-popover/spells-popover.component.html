@@ -1,0 +1,16 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>
+			Spells
+		</ion-title>
+		<ion-buttons slot="end">
+			<ion-button icon-only  (click)="Close()">
+				<ion-icon name="close-outline"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-button *ngFor="let _Spell of _DataService.SpellData | skillSort" expand="block" fill="clear" (click)="Select(_Spell)">{{_Spell.Name}}</ion-button>
+</ion-content>

@@ -1,0 +1,30 @@
+.Name {
+	max-width: 200px;
+}
+
+.Category, .Form {
+	max-width: 100px;
+}
+
+.Options {
+	max-width: 70px;
+}
+
+.Labels {
+	color: var(--ion-color-secondary);
+}
+
+.Skills {
+	min-height: 50px;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid rgba(var(--ion-color-primary-rgb), 0.2);
+	color: var(--ion-color-secondary-shade);
+}
+
+ion-grid {
+	margin-top: 10px;
+	padding: 10px;
+	border: 1px solid rgba(var(--ion-color-primary-rgb), 0.2);
+	border-radius: 5px;
+}

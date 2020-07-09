@@ -37,6 +37,20 @@
 						</ion-chip>
 					</div>
 				</ion-item>
+				<ion-item *ngIf="IsApothecary()">
+					<div class="potions" (click)="$event.stopPropagation()">
+						<ion-chip outline="true" *ngFor="let _Potion of Data.Potions" (click)="PresentPotionModal(_Potion)">
+							{{_Potion.Name}}
+						</ion-chip>
+					</div>
+				</ion-item>
+				<ion-item *ngIf="IsMagician()">
+					<div class="spells" (click)="$event.stopPropagation()">
+						<ion-chip outline="true" *ngFor="let _Spell of Data.Spells" (click)="PresentSpellModal(_Spell)">
+							{{_Spell.Name}}<span *ngIf="_Spell.Count > 1">&nbsp;x{{_Spell.Count}}</span>
+						</ion-chip>
+					</div>
+				</ion-item>
 			</ion-list>
 			<p class="Description" *ngIf="Data.Alive" [innerHTML]="Data.Summary">
 			</p>
@@ -59,5 +73,12 @@
 		</ion-card-header>
 		<ion-card-content [innerHTML]="Data.Details.NameStory">
 		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngFor="let _Section of Data.Sections">
+		<ion-card-header>
+			<ion-card-title>{{_Section.Heading}}</ion-card-title>
+		</ion-card-header>
+		<ion-card-content [innerHTML]="_Section.Body"></ion-card-content>
 	</ion-card>
 </ion-content>
