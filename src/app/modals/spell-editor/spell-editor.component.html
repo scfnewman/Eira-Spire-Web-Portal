@@ -51,4 +51,26 @@
 			</ion-item>
 		</ion-list>
 	</form>
+
+	<ion-toolbar>
+		<ion-title>
+			Sections
+		</ion-title>
+	</ion-toolbar>
+	<form *ngFor="let _Section of SpellSections; index as i" [formGroup]="SpellSections[i]">
+		<ion-list class="Section" lines="none">
+			<ion-item>
+				<ion-input placeholder="Heading" formControlName="Heading"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-textarea placeholder="Body" autoGrow="true" formControlName="Body"></ion-textarea>
+			</ion-item>
+			<ion-item>
+				<ion-button fill="outline" expand="block" (click)="DeleteSection(i)">Delete Section</ion-button>
+			</ion-item>
+		</ion-list>
+	</form>
+	<ion-item>
+		<ion-button expand="block" (click)="AddSection()">New Section</ion-button>
+	</ion-item>
 </ion-content>

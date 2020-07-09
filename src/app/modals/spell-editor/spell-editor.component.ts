@@ -13,6 +13,7 @@ export class SpellEditorModal implements OnInit {
 	@Input() Data: any;
 
 	SpellData: FormGroup;
+	SpellSections: FormGroup[] = [];
 	Error: boolean = false;
 
 	constructor(
@@ -29,6 +30,12 @@ export class SpellEditorModal implements OnInit {
 			Description: new FormControl((this.Data && this.Data.Description) ? this.Data.Description : null, Validators.required),
 			Effects: new FormControl((this.Data && this.Data.Effects) ? this.Data.Effects : null, Validators.required)
 		})
+
+		if (this.Data && this.Data.Sections) {
+			this.Data.Sections.forEach(Section => {
+				this.AddSection(Section.Heading, Section.Body);
+			})
+		}
 	}
 
 	DismissModal() {
@@ -36,9 +43,20 @@ export class SpellEditorModal implements OnInit {
 	}
 
 	Submit() {
-		if (this.SpellData.valid) {
+		if (this.SpellData.valid && this.CheckSectionValidity()) {
 			this.Error = false;
 			let Data = this.SpellData.value;
+
+			let SectionsData: any[] = [];
+
+			this.SpellSections.forEach(Section => {
+				let Data = {
+					Heading: Section.value.Heading,
+					Body: Section.value.Body
+				}
+
+				SectionsData.push(Data);
+			})
 
 			let Details = {
 				Category: Data.Category,
@@ -46,6 +64,7 @@ export class SpellEditorModal implements OnInit {
 				Cost: Data.Cost,
 				Description: Data.Description,
 				Effects: Data.Effects,
+				Sections: SectionsData,
 				PageID: this.Data ? this.Data.PageID : Data.Name.replace(/\s/g, "-").toUpperCase()
 			}
 
@@ -61,6 +80,33 @@ export class SpellEditorModal implements OnInit {
 		else {
 			this.Error = true;
 		}
+	}
+
+	AddSection(_Heading?: string, _Body?: string) {
+		let NewSection = this._FormBuilder.group({
+			Heading: new FormControl(_Heading ? _Heading : null, Validators.required),
+			Body: new FormControl(_Body ? _Body : null)
+		})
+
+		this.SpellSections.push(NewSection);
+	}
+
+	DeleteSection(_Index) {
+		let del = this.SpellSections[_Index];
+
+		this.SpellSections = this.SpellSections.filter(Section => {
+			if (Section != del) return Section;
+		})
+	}
+
+	CheckSectionValidity(): boolean {
+		let ValidSections: boolean = true;
+
+		this.SpellSections.forEach(Section => {
+			if (Section.invalid) ValidSections = false;;
+		});
+
+		return ValidSections;
 	}
 
 }

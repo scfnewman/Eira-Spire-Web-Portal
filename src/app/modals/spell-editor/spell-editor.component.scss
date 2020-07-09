@@ -5,6 +5,7 @@ ion-label {
 ion-input, ion-textarea {
 	border: 1px solid rgba(var(--ion-color-primary-rgb), 0.2);
 	border-radius: 5px;
+	--padding-start: 10px!important;
 }
 
 ion-textarea {
@@ -17,4 +18,10 @@ ion-textarea {
 	width: 100%;
 	justify-content: left;
 	margin-top: 10px;
+}
+
+.Section {
+	margin: 5px;
+	border: 1px solid rgba(var(--ion-color-secondary-rgb), 0.2);
+	border-radius: 5px;
 }
