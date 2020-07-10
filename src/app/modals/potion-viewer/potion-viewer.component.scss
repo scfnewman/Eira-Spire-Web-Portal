@@ -1,3 +1,10 @@
-ion-item {
-	--padding-start: 0px;
+ion-card-content {
+	div {
+		background: rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.12);
+   		color: rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.87);
+		border-radius: 15px;
+		padding: 10px;
+		margin-top: 10px;
+		padding-left: 10px;
+	}
 }

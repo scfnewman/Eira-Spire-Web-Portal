@@ -14,6 +14,7 @@ export class DataService {
 	SpellData;
 	PageData;
 	UserData;
+	AssetData;
 
 	constructor(
 		private _FireStore: AngularFirestore
@@ -36,6 +37,9 @@ export class DataService {
 		this._FireStore.collection<any>('users').valueChanges().subscribe(data => {
 			this.UserData = data;
 		})
+		this._FireStore.collection<any>('assets').valueChanges().subscribe(data => {
+			this.AssetData = data;
+		})
 	}
 
 	AddUserData(UID, Data) {
@@ -46,8 +50,7 @@ export class DataService {
 		return this._FireStore.doc<any>('users/' + UID).valueChanges();
 	}
 
-	UpdateUserData(UID, Data)
-	{
+	UpdateUserData(UID, Data) {
 		this._FireStore.doc<any>('users/' + UID).update(Data);
 	}
 
@@ -75,19 +78,27 @@ export class DataService {
 		this._FireStore.doc<any>('potions/' + Data.PageID).update(Data);
 	}
 
-	AddSkill(Data){
+	AddSkill(Data) {
 		this._FireStore.doc<any>('skills/' + Data.PageID).set(Data);
 	}
 
-	UpdateSkill(Data){
+	UpdateSkill(Data) {
 		this._FireStore.doc<any>('skills/' + Data.PageID).update(Data);
 	}
 
-	AddSpell(Data){
+	AddSpell(Data) {
 		this._FireStore.doc<any>('spells/' + Data.PageID).set(Data);
 	}
 
-	UpdateSpell(Data){
+	UpdateSpell(Data) {
 		this._FireStore.doc<any>('spells/' + Data.PageID).update(Data);
+	}
+
+	AddAsset(Data) {
+		this._FireStore.doc<any>('assets/' + Data.PageID).set(Data);
+	}
+
+	UpdateAsset(Data) {
+		this._FireStore.doc<any>('assets/' + Data.PageID).update(Data);
 	}
 }

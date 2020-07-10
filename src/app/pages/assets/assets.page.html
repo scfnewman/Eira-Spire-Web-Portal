@@ -1,0 +1,44 @@
+<app-header></app-header>
+
+<ion-content>
+	<ion-list>
+		<ion-item>
+			<ion-title color="secondary">Assets</ion-title>
+		</ion-item>
+		<ion-item lines="none">
+			<div class="Info">
+				<ion-text>Here you can see a list of all assets. To edit one, use the options menu; to create one, click
+					Add. If you wish to delete one, contact Simon.</ion-text>
+				<ion-text>If you wish to contribute money to buy more things, you can via <a
+						href="https://paypal.me/pools/c/8qIm0LkHzr" target="_blank">PayPal</a></ion-text>
+			</div>
+		</ion-item>
+		<ion-item lines="none">
+			<ion-grid>
+				<ion-row class="Labels">
+					<ion-col>Name</ion-col>
+					<ion-col>Dimensions</ion-col>
+					<ion-col>Owner</ion-col>
+					<ion-col class="Options">Options</ion-col>
+				</ion-row>
+				<ion-row class="Assets" *ngFor="let _Asset of _DataService.AssetData">
+					<ion-col>{{_Asset.Name}}</ion-col>
+					<ion-col>{{_Asset.Dimensions}}</ion-col>
+					<ion-col>{{_Asset.Owner}}</ion-col>
+					<ion-col class="Options">
+						<ion-buttons>
+							<ion-button (click)="OpenOptions($event, _Asset)">
+								<ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+							</ion-button>
+						</ion-buttons>
+					</ion-col>
+				</ion-row>
+				<ion-row *ngIf="_AuthService.UserData.Verified">
+					<ion-col>
+						<ion-button expand="block" (click)="OpenEditor()">Add</ion-button>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</ion-item>
+	</ion-list>
+</ion-content>
