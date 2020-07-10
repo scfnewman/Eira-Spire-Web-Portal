@@ -70,10 +70,11 @@ const routes: Routes = [
 		loadChildren: () => import('./pages/skills/skills.module').then(m => m.SkillsPageModule),
 		canActivate: [AuthGuard]
 	},
-  {
-    path: 'assets',
-    loadChildren: () => import('./pages/assets/assets.module').then( m => m.AssetsPageModule)
-  },
+	{
+		path: 'assets',
+		loadChildren: () => import('./pages/assets/assets.module').then(m => m.AssetsPageModule),
+		canActivate: [AuthGuard]
+	},
 ];
 
 @NgModule({

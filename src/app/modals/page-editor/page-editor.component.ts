@@ -67,7 +67,7 @@ export class PageEditorModal implements OnInit {
 				Category: this.PageData.value.Category,
 				Author: this.PageData.value.Author,
 				Body: this.PageData.value.Body,
-				LastEdited: this._DatePipe.transform(Date.now(), 'short'),
+				LastEdited: this._DatePipe.transform(Date.now(), 'd/M/yy, h:mm a'),
 				Sections: SectionsData,
 				PageID: PageID
 			}
