@@ -37,6 +37,8 @@ import { PotionViewerModal } from './modals/potion-viewer/potion-viewer.componen
 import { SkillViewerModal } from './modals/skill-viewer/skill-viewer.component'
 import { SpellViewerModal } from './modals/spell-viewer/spell-viewer.component'
 import { PotionCategoryPopoverComponent } from './components/potion-category-popover/potion-category-popover.component';
+import { AssetEditorModal } from './modals/asset-editor/asset-editor.component';
+import { AssetViewerModal } from './modals/asset-viewer/asset-viewer.component';
 
 @NgModule({
 	declarations: [
@@ -46,11 +48,13 @@ import { PotionCategoryPopoverComponent } from './components/potion-category-pop
 		PotionEditorModal,
 		SkillEditorModal,
 		SpellEditorModal,
+		AssetEditorModal,
 		CharacterViewerModal,
 		PageViewerModal,
 		PotionViewerModal,
 		SkillViewerModal,
 		SpellViewerModal,
+		AssetViewerModal,
 		OptionsPopoverComponent,
 		SkillsPopoverComponent,
 		PotionsPopoverComponent,
@@ -63,11 +67,13 @@ import { PotionCategoryPopoverComponent } from './components/potion-category-pop
 		PotionEditorModal,
 		SkillEditorModal,
 		SpellEditorModal,
+		AssetEditorModal,
 		CharacterViewerModal,
 		PageViewerModal,
 		PotionViewerModal,
 		SkillViewerModal,
 		SpellViewerModal,
+		AssetViewerModal,
 		OptionsPopoverComponent,
 		SkillsPopoverComponent,
 		PotionsPopoverComponent,

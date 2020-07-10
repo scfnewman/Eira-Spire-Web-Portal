@@ -41,6 +41,11 @@ export class AppComponent implements OnInit {
 			icon: 'flame'
 		},
 		{
+			title: 'Assets',
+			url: '/assets',
+			icon: 'home'
+		},
+		{
 			title: 'Help',
 			url: '/help',
 			icon: 'help'

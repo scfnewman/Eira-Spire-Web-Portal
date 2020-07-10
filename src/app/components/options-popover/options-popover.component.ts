@@ -11,6 +11,8 @@ import { SpellEditorModal } from 'src/app/modals/spell-editor/spell-editor.compo
 import { PotionViewerModal } from 'src/app/modals/potion-viewer/potion-viewer.component';
 import { SkillViewerModal } from 'src/app/modals/skill-viewer/skill-viewer.component';
 import { SpellViewerModal } from 'src/app/modals/spell-viewer/spell-viewer.component';
+import { AssetEditorModal } from 'src/app/modals/asset-editor/asset-editor.component';
+import { AssetViewerModal } from 'src/app/modals/asset-viewer/asset-viewer.component';
 
 @Component({
 	selector: 'app-options-popover',
@@ -60,6 +62,7 @@ export class OptionsPopoverComponent implements OnInit {
 			case "Potion": return PotionEditorModal;
 			case "Skill": return SkillEditorModal;
 			case "Spell": return SpellEditorModal;
+			case "Asset": return AssetEditorModal;
 		}
 	}
 
@@ -70,6 +73,7 @@ export class OptionsPopoverComponent implements OnInit {
 			case "Potion": return PotionViewerModal;
 			case "Skill": return SkillViewerModal;
 			case "Spell": return SpellViewerModal;
+			case "Asset": return AssetViewerModal;
 		}
 	}
 

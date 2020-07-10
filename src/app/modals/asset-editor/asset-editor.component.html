@@ -1,0 +1,69 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>
+			Asset Editor
+		</ion-title>
+		<ion-buttons slot="end">
+			<ion-text *ngIf="Error" color="danger">Please fill in the required fields before saving!</ion-text>
+			<ion-button (click)="Submit()">Save</ion-button>
+			<ion-button (click)="DismissModal()">Exit</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<form [formGroup]="AssetData">
+		<ion-toolbar>
+			<ion-title>
+				Details
+			</ion-title>
+		</ion-toolbar>
+		<ion-list>
+			<ion-item>
+				<ion-label>Name<span class="required">*</span></ion-label>
+				<ion-input placeholder="Text, Flag, Firepit, etc..." formControlName="Name"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Dimensions</ion-label>
+				<ion-input placeholder="4.5m, 45cm x 10cm, etc..." formControlName="Dimensions"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Count<span class="required">*</span></ion-label>
+				<ion-input placeholder="1" formControlName="Count" type="number"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Owner<span class="required">*</span></ion-label>
+				<ion-input placeholder="Who owns it?" formControlName="Owner"></ion-input>
+			</ion-item>
+			<ion-item>
+				<div class="TextEntry">
+					<ion-label>Description</ion-label>
+					<ion-textarea placeholder="Describe the Asset" autoGrow="true" formControlName="Description">
+					</ion-textarea>
+				</div>
+			</ion-item>
+		</ion-list>
+	</form>
+
+	<ion-toolbar>
+		<ion-title>
+			Sections
+		</ion-title>
+	</ion-toolbar>
+	<form *ngFor="let _Section of AssetSections; index as i" [formGroup]="AssetSections[i]">
+		<ion-list class="Section" lines="none">
+			<ion-item>
+				<ion-input placeholder="Heading" formControlName="Heading"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-textarea placeholder="Body" autoGrow="true" formControlName="Body"></ion-textarea>
+			</ion-item>
+			<ion-item>
+				<ion-button fill="outline" expand="block" (click)="DeleteSection(i)">Delete Section</ion-button>
+			</ion-item>
+		</ion-list>
+	</form>
+	<ion-item>
+		<ion-button expand="block" (click)="AddSection()">New Section</ion-button>
+	</ion-item>
+</ion-content>
