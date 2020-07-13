@@ -47,7 +47,8 @@ export class AuthService {
 							let Data = {
 								FirstName: _FirstName,
 								LastName: _LastName,
-								Verified: false
+								Verified: false,
+								Permission: 2
 							}
 
 							this._DataService.AddUserData(firebase.auth().currentUser.uid, Data);
@@ -99,5 +100,24 @@ export class AuthService {
 		firebase.auth().sendPasswordResetEmail(Email)
 			.then(Res => { })
 			.catch(Err => { })
+	}
+
+	GetUserFullName() {
+		return this.UserData.FirstName + " " + this.UserData.LastName;
+	}
+
+	GetUserUID() {
+		return firebase.auth().currentUser.uid;
+	}
+
+	GetPermissionLevel() {
+		return this.UserData.Permission;
+	}
+
+	CheckPermissionLevel(_PermissionLevel) {
+		if(this.UserData.Permission <= _PermissionLevel)
+			return true;
+		else
+			return false;
 	}
 }

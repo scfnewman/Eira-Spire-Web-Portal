@@ -30,7 +30,9 @@ export class OptionsPopoverComponent implements OnInit {
 		public _AuthService: AuthService
 	) { }
 
-	ngOnInit() { }
+	ngOnInit() {
+		console.log(this._AuthService.GetUserUID())
+	 }
 
 	async OpenEditor() {
 		const Modal = await this._ModalCtrl.create({

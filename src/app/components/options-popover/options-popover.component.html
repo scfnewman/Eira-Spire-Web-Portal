@@ -1,2 +1,2 @@
 <ion-button expand="block" fill="clear" (click)="OpenViewer()">View</ion-button>
-<ion-button expand="block" fill="clear" (click)="OpenEditor()" *ngIf="_AuthService.UserData.Verified">Edit</ion-button>
+<ion-button expand="block" fill="clear" (click)="OpenEditor()" *ngIf="(Data.Creator == _AuthService.GetUserUID() || _AuthService.CheckPermissionLevel(0)) && _AuthService.UserData.Verified">Edit</ion-button>
