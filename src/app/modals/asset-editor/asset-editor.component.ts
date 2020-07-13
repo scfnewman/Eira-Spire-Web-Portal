@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ModalController, PopoverController } from '@ionic/angular';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
+import { DatePipe } from '@angular/common';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
 	selector: 'app-asset-editor',
@@ -19,7 +21,9 @@ export class AssetEditorModal implements OnInit {
 	constructor(
 		private _ModalCtrl: ModalController,
 		private _FormBuilder: FormBuilder,
-		private _DataService: DataService
+		private _DataService: DataService,
+		private _DatePipe: DatePipe,
+		private _AuthService: AuthService
 	) { }
 
 	ngOnInit() {
@@ -65,7 +69,10 @@ export class AssetEditorModal implements OnInit {
 				Owner: Data.Owner,
 				Description: Data.Description,
 				Sections: SectionsData,
-				PageID: this.Data ? this.Data.PageID : (Data.Name + "-" + Data.Dimensions + "-" + Data.Owner).replace(/\s/g, "-").toUpperCase()
+				PageID: this.Data ? this.Data.PageID : (Data.Name + "-" + Data.Dimensions + "-" + Data.Owner).replace(/\s/g, "-").toUpperCase(),
+				LastEdited: this._DatePipe.transform(Date.now(), 'd/M/yy, h:mm a'),
+				LastEditedBy: this._AuthService.GetUserFullName(),
+				Creator: this.Data ? this.Data.Creator : this._AuthService.GetUserUID()
 			}
 
 			if (this.Data) {

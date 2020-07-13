@@ -6,6 +6,8 @@ import { PotionsPopoverComponent } from 'src/app/components/potions-popover/poti
 import { SpellsPopoverComponent } from 'src/app/components/spells-popover/spells-popover.component';
 import { DataService } from 'src/app/services/data.service';
 import { PotionCategoryPopoverComponent } from 'src/app/components/potion-category-popover/potion-category-popover.component';
+import { DatePipe } from '@angular/common';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
 	selector: 'app-character-editor',
@@ -27,7 +29,9 @@ export class CharacterEditorModal implements OnInit {
 		private _ModalCtrl: ModalController,
 		private _FormBuilder: FormBuilder,
 		private _PopCtrl: PopoverController,
-		private _DataService: DataService
+		private _DatePipe: DatePipe,
+		private _DataService: DataService,
+		private _AuthService: AuthService
 	) { }
 
 	ngOnInit() {
@@ -236,7 +240,10 @@ export class CharacterEditorModal implements OnInit {
 				Potions: this.CharacterPotions,
 				Spells: this.CharacterSpells,
 				Sections: SectionsData,
-				PageID: this.Data ? this.Data.PageID : (Data.FirstName + "-" + Data.LastName).toUpperCase()
+				PageID: this.Data ? this.Data.PageID : (Data.FirstName + "-" + Data.LastName).toUpperCase(),
+				LastEdited: this._DatePipe.transform(Date.now(), 'd/M/yy, h:mm a'),
+				LastEditedBy: this._AuthService.GetUserFullName(),
+				Creator: this.Data ? this.Data.Creator : this._AuthService.GetUserUID()
 			}
 
 			if (this.Data) {

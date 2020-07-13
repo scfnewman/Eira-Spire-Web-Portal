@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { DataService } from 'src/app/services/data.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
 	selector: 'app-page-editor',
@@ -21,7 +22,8 @@ export class PageEditorModal implements OnInit {
 		private _ModalCtrl: ModalController,
 		private _FormBuilder: FormBuilder,
 		private _DatePipe: DatePipe,
-		private _DataService: DataService
+		private _DataService: DataService,
+		private _AuthService: AuthService
 	) { }
 
 	ngOnInit() {
@@ -67,9 +69,11 @@ export class PageEditorModal implements OnInit {
 				Category: this.PageData.value.Category,
 				Author: this.PageData.value.Author,
 				Body: this.PageData.value.Body,
-				LastEdited: this._DatePipe.transform(Date.now(), 'd/M/yy, h:mm a'),
 				Sections: SectionsData,
-				PageID: PageID
+				PageID: PageID,
+				LastEdited: this._DatePipe.transform(Date.now(), 'd/M/yy, h:mm a'),
+				LastEditedBy: this._AuthService.GetUserFullName(),
+				Creator: this.Data ? this.Data.Creator : this._AuthService.GetUserUID()
 			}
 
 			if (this.Data) this._DataService.UpdatePage(Data);
