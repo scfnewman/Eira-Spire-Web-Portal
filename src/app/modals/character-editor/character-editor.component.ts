@@ -35,7 +35,7 @@ export class CharacterEditorModal implements OnInit {
 			Alive: new FormControl((this.Data && this.Data.Alive) ? this.Data.Alive : false),
 			Retired: new FormControl((this.Data && this.Data.Retired) ? this.Data.Retired : false),
 			FirstName: new FormControl((this.Data && this.Data.FirstName) ? this.Data.FirstName : null, Validators.required),
-			LastName: new FormControl((this.Data && this.Data.LastName) ? this.Data.LastName : null, Validators.required),
+			LastName: new FormControl((this.Data && this.Data.LastName) ? this.Data.LastName : null),
 			EarnedName: new FormControl((this.Data && this.Data.EarnedName) ? this.Data.EarnedName : null),
 			Identity: new FormControl((this.Data && this.Data.Identity) ? this.Data.Identity : null, Validators.required),
 			Age: new FormControl((this.Data && this.Data.Age) ? this.Data.Age : null, Validators.required),
