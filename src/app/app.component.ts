@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
 		{
 			title: 'Assets',
 			url: '/assets',
-			icon: 'home'
+			icon: 'dice'
 		},
 		{
 			title: 'Help',
