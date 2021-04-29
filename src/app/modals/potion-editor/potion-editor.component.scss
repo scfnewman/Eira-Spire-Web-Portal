@@ -2,13 +2,22 @@ ion-label {
 	min-width: 20%;
 }
 
-ion-input, ion-textarea {
+ion-input, .text-area {
 	border: 1px solid rgba(var(--ion-color-primary-rgb), 0.2);
 	border-radius: 5px;
+	--padding-start: 10px!important;
 }
 
-ion-textarea {
-	margin-bottom: 10px;
+.text-area {
+	margin: 10px 0 20px;
+	width: 100%;
+}
+
+.Skills {
+	display:flex;
+	width: 100%;
+	flex-flow: wrap;
+	max-width: 100%;
 }
 
 .TextEntry {
@@ -19,3 +28,8 @@ ion-textarea {
 	margin-top: 10px;
 }
 
+.Section {
+	margin: 5px;
+	border: 1px solid rgba(var(--ion-color-secondary-rgb), 0.2);
+	border-radius: 5px;
+}

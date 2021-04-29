@@ -51,9 +51,15 @@
 			<ion-item>
 				<div class="TextEntry">
 					<ion-label>Definition<span class="required">*</span></ion-label>
-					<ion-textarea placeholder="The long bit of text after the name" autoGrow="true"
-						formControlName="Definition">
-					</ion-textarea>
+					<editor formControlName="Definition" apiKey="6zoo8lpf2bpnvalsp63c53o3mbntdaidtfqf1q7bwmnt5i7d"
+						class="text-area" [init]="{
+							height: 500,
+							menubar: true,
+							toolbar:
+							  'undo redo | formatselect | bold italic | \
+							  alignleft aligncenter alignright alignjustify | \
+							  bullist numlist outdent indent | help'
+						  }"></editor>
 				</div>
 			</ion-item>
 			<ion-item>
@@ -69,40 +75,71 @@
 			<ion-item>
 				<div class="TextEntry">
 					<ion-label>Description<span class="required">*</span></ion-label>
-					<ion-textarea placeholder="What does the potion look/smell/taste like" autoGrow="true"
-						formControlName="Description">
-					</ion-textarea>
+					<editor formControlName="Description" apiKey="6zoo8lpf2bpnvalsp63c53o3mbntdaidtfqf1q7bwmnt5i7d"
+						class="text-area" [init]="{
+							height: 500,
+							menubar: true,
+							toolbar:
+							  'undo redo | formatselect | bold italic | \
+							  alignleft aligncenter alignright alignjustify | \
+							  bullist numlist outdent indent | help'
+						  }"></editor>
 				</div>
 			</ion-item>
 			<ion-item>
 				<div class="TextEntry">
 					<ion-label>Roleplaying Effect<span class="required">*</span></ion-label>
-					<ion-textarea placeholder="The effect on the character" autoGrow="true"
-						formControlName="RoleplayingEffect">
-					</ion-textarea>
+					<editor formControlName="RoleplayingEffect"
+						apiKey="6zoo8lpf2bpnvalsp63c53o3mbntdaidtfqf1q7bwmnt5i7d" class="text-area" [init]="{
+							height: 500,
+							menubar: true,
+							toolbar:
+							  'undo redo | formatselect | bold italic | \
+							  alignleft aligncenter alignright alignjustify | \
+							  bullist numlist outdent indent | help'
+						  }"></editor>
 				</div>
 			</ion-item>
 			<ion-item>
 				<div class="TextEntry">
 					<ion-label>MechanicalEffect<span class="required">*</span></ion-label>
-					<ion-textarea placeholder="The effect on the game" autoGrow="true"
-						formControlName="MechanicalEffect">
-					</ion-textarea>
+					<editor formControlName="MechanicalEffect" apiKey="6zoo8lpf2bpnvalsp63c53o3mbntdaidtfqf1q7bwmnt5i7d"
+						class="text-area" [init]="{
+							height: 500,
+							menubar: true,
+							toolbar:
+							  'undo redo | formatselect | bold italic | \
+							  alignleft aligncenter alignright alignjustify | \
+							  bullist numlist outdent indent | help'
+						  }"></editor>
 				</div>
 			</ion-item>
 			<ion-item>
 				<div class="TextEntry">
 					<ion-label>Recipe<span class="required">*</span></ion-label>
-					<ion-textarea placeholder="What is it made of" autoGrow="true" formControlName="Recipe">
-					</ion-textarea>
+					<editor formControlName="Recipe" apiKey="6zoo8lpf2bpnvalsp63c53o3mbntdaidtfqf1q7bwmnt5i7d"
+						class="text-area" [init]="{
+							height: 500,
+							menubar: true,
+							toolbar:
+							  'undo redo | formatselect | bold italic | \
+							  alignleft aligncenter alignright alignjustify | \
+							  bullist numlist outdent indent | help'
+						  }"></editor>
 				</div>
 			</ion-item>
 			<ion-item>
 				<div class="TextEntry">
 					<ion-label>Notes</ion-label>
-					<ion-textarea placeholder="Anything important to know about the potion" autoGrow="true"
-						formControlName="Notes">
-					</ion-textarea>
+					<editor formControlName="Notes" apiKey="6zoo8lpf2bpnvalsp63c53o3mbntdaidtfqf1q7bwmnt5i7d"
+						class="text-area" [init]="{
+							height: 500,
+							menubar: true,
+							toolbar:
+							  'undo redo | formatselect | bold italic | \
+							  alignleft aligncenter alignright alignjustify | \
+							  bullist numlist outdent indent | help'
+						  }"></editor>
 				</div>
 			</ion-item>
 		</ion-list>

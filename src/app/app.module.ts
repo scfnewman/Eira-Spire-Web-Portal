@@ -21,6 +21,7 @@ import { SkillsPopoverComponent } from './components/skills-popover/skills-popov
 import { PotionCategoryPopoverComponent } from './components/potion-category-popover/potion-category-popover.component';
 import { PotionsPopoverComponent } from './components/potions-popover/potions-popover.component';
 import { SpellsPopoverComponent } from './components/spells-popover/spells-popover.component';
+import { HeaderComponent } from './components/header/header.component';
 
 import { PageEditorModal } from './modals/page-editor/page-editor.component';
 import { PageViewerModal } from './modals/page-viewer/page-viewer.component';
@@ -51,11 +52,13 @@ import { SpellsPage } from './pages/spells/spells.page';
 
 import { PipesModule } from './pipes/pipes.module';
 import { DatePipe } from '@angular/common';
-import { HeaderComponent } from './components/header/header.component';
-import { AngularFireAuthModule } from '@angular/fire/auth';
+
 import { AngularFireModule } from '@angular/fire';
-import { FirebaseConfig } from 'src/credentials';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { FirebaseConfig } from 'src/credentials';
+import { EditorModule } from '@tinymce/tinymce-angular';
+import { EditorModal } from './modals/editor/editor.component';
 
 @NgModule({
 	declarations: [
@@ -86,6 +89,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 		SkillViewerModal,
 		SpellViewerModal,
 		AssetViewerModal,
+		EditorModal,
 
 		HeaderComponent,
 		OptionsPopoverComponent,
@@ -121,6 +125,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 		SkillViewerModal,
 		SpellViewerModal,
 		AssetViewerModal,
+		EditorModal,
 
 		HeaderComponent,
 		OptionsPopoverComponent,
@@ -138,7 +143,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 		PipesModule,
 		AngularFireAuthModule,
 		AngularFireModule.initializeApp(FirebaseConfig),
-		AngularFirestoreModule
+		AngularFirestoreModule,
+		EditorModule
 	],
 	providers: [
 		StatusBar,

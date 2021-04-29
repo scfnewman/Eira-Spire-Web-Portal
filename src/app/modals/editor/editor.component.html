@@ -1,0 +1,53 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>
+			Editor
+		</ion-title>
+		<ion-buttons slot="end">
+			<ion-text *ngIf="Error" color="danger">Please fill in the required fields before saving!</ion-text>
+			<ion-button (click)="Submit()">Save</ion-button>
+			<ion-button (click)="DismissModal()">Exit</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<form [formGroup]="Form">
+		<ion-list>
+			<ng-container *ngFor="let _Field of Schema.fields">
+				<ion-toolbar *ngIf="_Field.type == 'heading'">
+					<!-- HEADING -->
+					<ion-title>{{_Field.content}}</ion-title>
+				</ion-toolbar>
+
+				<ion-item *ngIf="_Field.type == 'textarea'">
+					<!-- TEXT AREA -->
+					<div class="TextEntry">
+						<ion-label>{{_Field.name}}<span class="required" *ngIf="_Field.required">*</span></ion-label>
+						<editor formControlName="content" apiKey="6zoo8lpf2bpnvalsp63c53o3mbntdaidtfqf1q7bwmnt5i7d" class="text-area" initialValue="" [init]="{
+						height: 500,
+						menubar: true,
+						toolbar:
+						  'undo redo | formatselect | bold italic | \
+						  alignleft aligncenter alignright alignjustify | \
+						  bullist numlist outdent indent | help'
+					  }"></editor>
+					</div>
+				</ion-item>
+
+				<ion-item *ngIf="_Field.type == 'text'">
+					<ion-label>{{_Field.name}}<span class="required" *ngIf="_Field.required">*</span></ion-label>
+					<ion-input [placeholder]="_Field.name"></ion-input>
+				</ion-item>
+
+				<ion-item *ngIf="_Field.type == 'select'">
+					<ion-label>{{_Field.name}}<span class="required" *ngIf="_Field.required">*</span></ion-label>
+					<ion-select>
+						<ion-select-option *ngFor="let _Option of _Field.options" [value]="_Option">{{_Option}}</ion-select-option>
+					</ion-select>
+				</ion-item>
+			</ng-container>
+
+		</ion-list>
+	</form>
+</ion-content>

@@ -38,15 +38,29 @@
 			<ion-item>
 				<div class="TextEntry">
 					<ion-label>Description<span class="required">*</span></ion-label>
-					<ion-textarea placeholder="Describe the spell" autoGrow="true" formControlName="Description">
-					</ion-textarea>
+					<editor formControlName="Description" apiKey="6zoo8lpf2bpnvalsp63c53o3mbntdaidtfqf1q7bwmnt5i7d"
+						class="text-area" [init]="{
+							height: 500,
+							menubar: true,
+							toolbar:
+							  'undo redo | formatselect | bold italic | \
+							  alignleft aligncenter alignright alignjustify | \
+							  bullist numlist outdent indent | help'
+						  }"></editor>
 				</div>
 			</ion-item>
 			<ion-item>
 				<div class="TextEntry">
 					<ion-label>Effects<span class="required">*</span></ion-label>
-					<ion-textarea placeholder="What does the spell do" autoGrow="true" formControlName="Effects">
-					</ion-textarea>
+					<editor formControlName="Effects" apiKey="6zoo8lpf2bpnvalsp63c53o3mbntdaidtfqf1q7bwmnt5i7d"
+						class="text-area" [init]="{
+							height: 500,
+							menubar: true,
+							toolbar:
+							  'undo redo | formatselect | bold italic | \
+							  alignleft aligncenter alignright alignjustify | \
+							  bullist numlist outdent indent | help'
+						  }"></editor>
 				</div>
 			</ion-item>
 		</ion-list>
@@ -63,7 +77,15 @@
 				<ion-input placeholder="Heading" formControlName="Heading"></ion-input>
 			</ion-item>
 			<ion-item>
-				<ion-textarea placeholder="Body" autoGrow="true" formControlName="Body"></ion-textarea>
+				<editor formControlName="Body" apiKey="6zoo8lpf2bpnvalsp63c53o3mbntdaidtfqf1q7bwmnt5i7d"
+						class="text-area" [init]="{
+							height: 500,
+							menubar: true,
+							toolbar:
+							  'undo redo | formatselect | bold italic | \
+							  alignleft aligncenter alignright alignjustify | \
+							  bullist numlist outdent indent | help'
+						  }"></editor>
 			</ion-item>
 			<ion-item>
 				<ion-button fill="outline" expand="block" (click)="DeleteSection(i)">Delete Section</ion-button>
