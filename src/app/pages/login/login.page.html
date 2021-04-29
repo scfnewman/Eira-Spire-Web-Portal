@@ -3,9 +3,13 @@
 		<div class="logo">
 		</div>
 		<form [formGroup]="Login" (ngSubmit)="Submit()">
-			<ion-input type="email" formControlName="email" placeholder="Email" (keyup.enter)="Submit()"></ion-input>
-			<ion-input type="password" formControlName="password" placeholder="Password" (keyup.enter)="Submit()">
+			<ion-input type="email" formControlName="email" placeholder="Email" (keyup.enter)="Submit()" autocomplete="email-address"></ion-input>
+			<ion-input type="password" formControlName="password" placeholder="Password" (keyup.enter)="Submit()" autocomplete="password">
 			</ion-input>
+			<!-- <ion-item>
+				<ion-label>Remember Me</ion-label>
+				<ion-checkbox slot="end" mode="ios"></ion-checkbox>
+			</ion-item> -->
 			<p><span routerLink="/password-recovery">Forgotten Password?</span></p>
 			<div class="buttons">
 				<ion-button type="submit">Login</ion-button>
@@ -15,5 +19,7 @@
 				<p class="error">{{Error}}</p>
 			</ion-item>
 		</form>
+
+		<p (click)="OpenSecurityModal()">Concerned about data security?</p>
 	</div>
 </ion-content>

@@ -22,6 +22,10 @@ form {
 	background: none;
 }
 
+ion-label {
+	color: var(--ion-color-tertiary)!important;
+}
+
 ion-input {
 	--background: var(--ion-color-secondary);
 	border-radius: 5px;
@@ -46,12 +50,9 @@ p {
 	width: 100%;
 	text-align: center;
 	color: var(--ion-color-primary);
+	cursor: pointer;
 }
 
 .error {
 	color: var(--ion-color-danger);
-}
-
-span {
-	cursor: pointer;
 }
