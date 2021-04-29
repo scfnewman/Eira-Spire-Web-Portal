@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { MenuController, ModalController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SecurityModal } from 'src/app/modals/security/security.component';
 
 @Component({
 	selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginPage implements OnInit {
 		private _MenuCtrl: MenuController,
 		private _AuthService: AuthService,
 		private _FormBuilder: FormBuilder,
-		private _Router: Router
+		private _Router: Router,
+		private _ModalCtrl: ModalController
 	) {
 		this.Login = this._FormBuilder.group({
 			email: new FormControl(null, Validators.compose([Validators.email, Validators.required])),
@@ -55,8 +57,14 @@ export class LoginPage implements OnInit {
 		else {
 			this.Error = "Please enter your login details"
 		}
+	}
 
-
+	OpenSecurityModal() {
+		this._ModalCtrl.create({
+			component: SecurityModal
+		}).then(_Modal => {
+			_Modal.present();
+		})
 	}
 
 }

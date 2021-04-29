@@ -11,23 +11,30 @@ export class EditorModal implements OnInit {
 
 	@Input() Data;
 
+	Error: string;
+
 	Schema = {
 		fields: [{
 			type: "heading",
-			content: "Details"
+			content: "Details",
+			required: false
 		}, {
 			type: "text",
-			name: "Name"
+			name: "Name",
+			required: false
 		}, {
 			type: "textarea",
-			name: "Content"
+			name: "Content",
+			required: false
 		}, {
 			type: "select",
 			name: "Select",
-			options: ["one", "two", "three"]
+			options: ["one", "two", "three"],
+			required: false
 		}, {
 			type: "checkbox",
-			name: "Check"
+			name: "Check",
+			required: false
 		}]
 	};
 
@@ -52,4 +59,7 @@ export class EditorModal implements OnInit {
 		this._ModalCtrl.dismiss();
 	}
 
+	Submit() {
+		
+	}
 }
