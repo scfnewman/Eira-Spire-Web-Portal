@@ -10,16 +10,13 @@ import { DataService } from './data.service';
 })
 export class AuthService {
 
-	Auth: Observable<firebase.User>
 	UserData: any;
 	UserInfo: any;
 
 	constructor(
 		private _FirebaseAuth: AngularFireAuth,
 		private _DataService: DataService
-	) {
-		this.Auth = _FirebaseAuth.authState;
-	}
+	) { }
 
 	async Login(_Email: string, _Password: string): Promise<any> {
 		return new Promise<void>((resolve, reject) => {
@@ -31,27 +28,28 @@ export class AuthService {
 					reject(false);
 				});
 		})
-
 	}
 
 	async Signup(_FirstName: string, _LastName: string, _Email: string, _Password: string): Promise<any> {
 		return new Promise<void>((resolve, reject) => {
 			this._FirebaseAuth.createUserWithEmailAndPassword(_Email, _Password)
 				.then(res => {
-					firebase.auth().currentUser.sendEmailVerification()
-						.then(res => {
-							let Data = {
-								FirstName: _FirstName,
-								LastName: _LastName,
-								Verified: false
-							}
-
-							this._DataService.AddUserData(firebase.auth().currentUser.uid, Data);
-							resolve()
-						})
-						.catch(err => {
-							reject(err);
-						});
+					this._FirebaseAuth.currentUser.then(User => {
+						User.sendEmailVerification()
+							.then(res => {
+								let Data = {
+									FirstName: _FirstName,
+									LastName: _LastName,
+									Verified: false
+								}
+								
+								this._DataService.AddUserData(User.uid, Data);
+								resolve()
+							})
+							.catch(err => {
+								reject(err);
+							});
+					})
 				})
 				.catch(err => {
 					reject(err);
@@ -67,31 +65,43 @@ export class AuthService {
 	}
 
 	isAuthenticated() {
-		if (firebase.auth().currentUser)
-			return true;
-		else
-			return false;
+		return new Promise<void>((resolve, reject) => {
+			this._FirebaseAuth.currentUser.then(User => {
+				if (User) resolve();
+				else reject();
+			}).catch(err => {
+				reject();
+			})
+		})
+
 	}
 
 	GetUserInfo(): Promise<any> {
 		return new Promise<void>((resolve) => {
-			this.UserInfo = firebase.auth().currentUser;
-			resolve();
+			this._FirebaseAuth.currentUser.then(User => {
+				this.UserInfo = User;
+				console.log(User);
+				resolve();
+			});
+
 		});
 	}
 
 	GetUserData(): Promise<any> {
 		return new Promise<void>((resolve) => {
-			this._DataService.GetUserData(firebase.auth().currentUser.uid).subscribe(Data => {
-				this.UserData = Data;
-				resolve();
-			})
+			this.GetUserInfo().then(() => {
+				this._DataService.GetUserData(this.UserInfo.uid).subscribe(Data => {
+					this.UserData = Data;
+					resolve();
+				})
+			});
+
+
+			
 		});
 	}
 
 	RequestResetEmail(Email) {
-		firebase.auth().sendPasswordResetEmail(Email)
-			.then(Res => { })
-			.catch(Err => { })
+		this._FirebaseAuth.sendPasswordResetEmail(Email);
 	}
 }
