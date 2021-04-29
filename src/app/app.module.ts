@@ -35,6 +35,8 @@ import { SpellViewerModal } from './modals/spell-viewer/spell-viewer.component'
 import { CharacterEditorModal } from './modals/character-editor/character-editor.component';
 import { AssetEditorModal } from './modals/asset-editor/asset-editor.component';
 import { AssetViewerModal } from './modals/asset-viewer/asset-viewer.component';
+import { EditorModal } from './modals/editor/editor.component';
+import { SecurityModal } from './modals/security/security.component';
 
 import { AssetsPage } from './pages/assets/assets.page';
 import { CharactersPage } from './pages/characters/characters.page';
@@ -58,7 +60,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { FirebaseConfig } from 'src/credentials';
 import { EditorModule } from '@tinymce/tinymce-angular';
-import { EditorModal } from './modals/editor/editor.component';
+
 
 @NgModule({
 	declarations: [
@@ -90,6 +92,7 @@ import { EditorModal } from './modals/editor/editor.component';
 		SpellViewerModal,
 		AssetViewerModal,
 		EditorModal,
+		SecurityModal,
 
 		HeaderComponent,
 		OptionsPopoverComponent,
@@ -126,6 +129,7 @@ import { EditorModal } from './modals/editor/editor.component';
 		SpellViewerModal,
 		AssetViewerModal,
 		EditorModal,
+		SecurityModal,
 
 		HeaderComponent,
 		OptionsPopoverComponent,
