@@ -80,7 +80,6 @@ export class AuthService {
 		return new Promise<void>((resolve) => {
 			this._FirebaseAuth.currentUser.then(User => {
 				this.UserInfo = User;
-				console.log(User);
 				resolve();
 			});
 

@@ -133,7 +133,6 @@ export class CharacterEditorModal implements OnInit {
 		await Pop.present();
 
 		return await Pop.onDidDismiss().then(Data => {
-			console.log(Data);
 			if (Data) {
 				if (!this.CharacterPotions)
 					this.CharacterPotions = new Array<any>();

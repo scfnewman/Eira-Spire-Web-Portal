@@ -50,9 +50,6 @@ export class EditorModal implements OnInit {
 	}
 
 	ngOnInit() {
-		this.Form.controls.content.valueChanges.subscribe(Data => {
-			console.log(Data);
-		})
 	 }
 
 	DismissModal() {
@@ -60,6 +57,6 @@ export class EditorModal implements OnInit {
 	}
 
 	Submit() {
-		
+
 	}
 }
