@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "eira-spire"
+  },
+  "targets": {
+    "eira-spire": {
+      "hosting": {
+        "app": [
+          "eira-spire"
+        ]
+      }
+    }
   }
 }

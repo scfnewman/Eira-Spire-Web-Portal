@@ -1,5 +1,18 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AssetsPage } from './pages/assets/assets.page';
+import { CharactersPage } from './pages/characters/characters.page';
+import { HelpPage } from './pages/help/help.page';
+import { HomePage } from './pages/home/home.page';
+import { LoginPage } from './pages/login/login.page';
+import { PagesPage } from './pages/pages/pages.page';
+import { PasswordRecoveryPage } from './pages/password-recovery/password-recovery.page';
+import { PlayersPage } from './pages/players/players.page';
+import { PotionsPage } from './pages/potions/potions.page';
+import { SettingsPage } from './pages/settings/settings.page';
+import { SignupPage } from './pages/signup/signup.page';
+import { SkillsPage } from './pages/skills/skills.page';
+import { SpellsPage } from './pages/spells/spells.page';
 import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
@@ -10,7 +23,7 @@ const routes: Routes = [
 	},
 	{
 		path: 'home',
-		loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule),
+		component: HomePage,
 		canActivate: [AuthGuard]
 	},
 	{
@@ -20,59 +33,59 @@ const routes: Routes = [
 	},
 	{
 		path: 'login',
-		loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
+		component: LoginPage
 	},
 	{
 		path: 'characters',
-		loadChildren: () => import('./pages/characters/characters.module').then(m => m.CharactersPageModule),
+		component: CharactersPage,
 		canActivate: [AuthGuard]
 	},
 	{
 		path: 'pages',
-		loadChildren: () => import('./pages/pages/pages.module').then(m => m.PagesPageModule),
+		component: PagesPage,
 		canActivate: [AuthGuard]
 	},
 	{
 		path: 'players',
-		loadChildren: () => import('./pages/players/players.module').then(m => m.PlayersPageModule),
+		component: PlayersPage,
 		canActivate: [AuthGuard]
 	},
 	{
 		path: 'settings',
-		loadChildren: () => import('./pages/settings/settings.module').then(m => m.SettingsPageModule),
+		component: SettingsPage,
 		canActivate: [AuthGuard]
 	},
 	{
 		path: 'signup',
-		loadChildren: () => import('./pages/signup/signup.module').then(m => m.SignupPageModule)
+		component: SignupPage
 	},
 	{
 		path: 'password-recovery',
-		loadChildren: () => import('./pages/password-recovery/password-recovery.module').then(m => m.PasswordRecoveryPageModule)
+		component: PasswordRecoveryPage
 	},
 	{
 		path: 'help',
-		loadChildren: () => import('./pages/help/help.module').then(m => m.HelpPageModule),
+		component: HelpPage,
 		canActivate: [AuthGuard]
 	},
 	{
 		path: 'potions',
-		loadChildren: () => import('./pages/potions/potions.module').then(m => m.PotionsPageModule),
+		component: PotionsPage,
 		canActivate: [AuthGuard]
 	},
 	{
 		path: 'spells',
-		loadChildren: () => import('./pages/spells/spells.module').then(m => m.SpellsPageModule),
+		component: SpellsPage,
 		canActivate: [AuthGuard]
 	},
 	{
 		path: 'skills',
-		loadChildren: () => import('./pages/skills/skills.module').then(m => m.SkillsPageModule),
+		component: SkillsPage,
 		canActivate: [AuthGuard]
 	},
 	{
 		path: 'assets',
-		loadChildren: () => import('./pages/assets/assets.module').then(m => m.AssetsPageModule),
+		component: AssetsPage,
 		canActivate: [AuthGuard]
 	},
 ];

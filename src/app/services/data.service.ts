@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from './auth.service';
-import { ThrowStmt } from '@angular/compiler';
 
 @Injectable({
 	providedIn: 'root'
@@ -19,27 +18,27 @@ export class DataService {
 	constructor(
 		private _FireStore: AngularFirestore
 	) {
-		this._FireStore.collection<any>('characters').valueChanges().subscribe(data => {
-			this.CharacterData = data;
-		});
-		this._FireStore.collection<any>('skills').valueChanges().subscribe(data => {
-			this.SkillData = data;
-		});
-		this._FireStore.collection<any>('potions').valueChanges().subscribe(data => {
-			this.PotionData = data;
-		});
-		this._FireStore.collection<any>('spells').valueChanges().subscribe(data => {
-			this.SpellData = data;
-		});
-		this._FireStore.collection<any>('pages').valueChanges().subscribe(data => {
-			this.PageData = data;
-		})
-		this._FireStore.collection<any>('users').valueChanges().subscribe(data => {
-			this.UserData = data;
-		})
-		this._FireStore.collection<any>('assets').valueChanges().subscribe(data => {
-			this.AssetData = data;
-		})
+		// this._FireStore.collection<any>('characters').valueChanges().subscribe(data => {
+		// 	this.CharacterData = data;
+		// });
+		// this._FireStore.collection<any>('skills').valueChanges().subscribe(data => {
+		// 	this.SkillData = data;
+		// });
+		// this._FireStore.collection<any>('potions').valueChanges().subscribe(data => {
+		// 	this.PotionData = data;
+		// });
+		// this._FireStore.collection<any>('spells').valueChanges().subscribe(data => {
+		// 	this.SpellData = data;
+		// });
+		// this._FireStore.collection<any>('pages').valueChanges().subscribe(data => {
+		// 	this.PageData = data;
+		// })
+		// this._FireStore.collection<any>('users').valueChanges().subscribe(data => {
+		// 	this.UserData = data;
+		// })
+		// this._FireStore.collection<any>('assets').valueChanges().subscribe(data => {
+		// 	this.AssetData = data;
+		// })
 	}
 
 	AddUserData(UID, Data) {
