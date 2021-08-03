@@ -65,7 +65,8 @@ export class SpellEditorModal implements OnInit {
 				Description: Data.Description,
 				Effects: Data.Effects,
 				Sections: SectionsData,
-				PageID: this.Data ? this.Data.PageID : Data.Name.replace(/\s/g, "-").toUpperCase()
+				PageID: this.Data ? this.Data.PageID : Data.Name.replace(/\s/g, "-").toUpperCase(),
+				LastUpdate: Date.now()
 			}
 
 			if (this.Data) {

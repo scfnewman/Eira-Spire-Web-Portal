@@ -65,7 +65,8 @@ export class AssetEditorModal implements OnInit {
 				Owner: Data.Owner,
 				Description: Data.Description,
 				Sections: SectionsData,
-				PageID: this.Data ? this.Data.PageID : (Data.Name + "-" + Data.Dimensions + "-" + Data.Owner).replace(/\s/g, "-").toUpperCase()
+				PageID: this.Data ? this.Data.PageID : (Data.Name + "-" + Data.Dimensions + "-" + Data.Owner).replace(/\s/g, "-").toUpperCase(),
+				LastUpdate: Date.now()
 			}
 
 			if (this.Data) {

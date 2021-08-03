@@ -69,7 +69,8 @@ export class PageEditorModal implements OnInit {
 				Body: this.PageData.value.Body,
 				LastEdited: this._DatePipe.transform(Date.now(), 'd/M/yy, h:mm a'),
 				Sections: SectionsData,
-				PageID: PageID
+				PageID: PageID,
+				LastUpdate: Date.now()
 			}
 
 			if (this.Data) this._DataService.UpdatePage(Data);

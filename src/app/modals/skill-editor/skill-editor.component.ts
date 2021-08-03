@@ -44,7 +44,8 @@ export class SkillEditorModal implements OnInit {
 				Name: Data.Name,
 				Cost: Data.Cost,
 				Description: Data.Description,
-				PageID: (this.Data && this.Data.PageID) ? this.Data.PageID : Data.Name.replace(/\s/g, "-").toUpperCase()
+				PageID: (this.Data && this.Data.PageID) ? this.Data.PageID : Data.Name.replace(/\s/g, "-").toUpperCase(),
+				LastUpdate: Date.now()
 			}
 
 			if (this.Data && this.Data.PageID) {

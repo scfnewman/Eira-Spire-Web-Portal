@@ -235,7 +235,8 @@ export class CharacterEditorModal implements OnInit {
 				Potions: this.CharacterPotions,
 				Spells: this.CharacterSpells,
 				Sections: SectionsData,
-				PageID: this.Data ? this.Data.PageID : (Data.FirstName + "-" + Data.LastName).toUpperCase()
+				PageID: this.Data ? this.Data.PageID : (Data.FirstName + "-" + Data.LastName).toUpperCase(),
+				LastUpdate: Date.now()
 			}
 
 			if (this.Data) {
