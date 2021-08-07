@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ModalController, PopoverController } from '@ionic/angular';
+import { AlertController, ModalController, PopoverController } from '@ionic/angular';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
 
@@ -18,6 +18,7 @@ export class SpellEditorModal implements OnInit {
 
 	constructor(
 		private _ModalCtrl: ModalController,
+		private _AlertCtrl: AlertController,
 		private _FormBuilder: FormBuilder,
 		private _DataService: DataService
 	) { }
@@ -93,11 +94,35 @@ export class SpellEditorModal implements OnInit {
 	}
 
 	DeleteSection(_Index) {
-		let del = this.SpellSections[_Index];
+		this._AlertCtrl.create({
+			header: 'Warning!',
+			message: 'Are you sure you wish to delete this section?',
+			buttons: [{
+				text: 'No',
+				role: 'cancel'
+			},
+			{
+				text: 'Yes',
+				role: 'success',
+				handler: () => {
+					let del = this.SpellSections[_Index];
 
-		this.SpellSections = this.SpellSections.filter(Section => {
-			if (Section != del) return Section;
+					this.SpellSections = this.SpellSections.filter(Section => {
+						if (Section != del) return Section;
+					})
+				}
+			}]
+		}).then(_Alert => {
+			_Alert.present();
 		})
+
+	}
+
+	AddRitualSections() {
+		this.AddSection('Performing the Ritual');
+		this.AddSection('Additional Targets');
+		this.AddSection('Option');
+		this.AddSection('Common Elements');
 	}
 
 	CheckSectionValidity(): boolean {
