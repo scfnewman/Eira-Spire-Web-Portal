@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ModalController } from '@ionic/angular';
 
 @Component({
@@ -10,11 +11,16 @@ export class PageViewerModal implements OnInit {
 
 	@Input() Data;
 
+	HideSections: boolean[] = [];
+
 	constructor(
-		private _ModalCtrl: ModalController
+		private _ModalCtrl: ModalController,
+		public _Sanitizer: DomSanitizer
 	) { }
 
-	ngOnInit() { }
+	ngOnInit() {
+		this.Data.Sections.forEach(() => this.HideSections.push(false));
+	}
 
 	DismissModal() {
 		this._ModalCtrl.dismiss();

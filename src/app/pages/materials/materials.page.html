@@ -1,0 +1,58 @@
+<app-header></app-header>
+
+<ion-content>
+	<ion-list>
+		<ion-item lines="full" class="title">
+			<ion-title color="secondary">Materials & Herbs</ion-title>
+		</ion-item>
+		<ion-item lines="none">
+			<ion-text>Here you can see a list of all materials and herbs. Edit the prices below and click the save icon.</ion-text>
+		</ion-item>
+		<ion-item>
+			<ion-grid>
+				<ion-row class="Labels">
+					<ion-col class="Name">Name</ion-col>
+					<ion-col class="Price">
+						<ion-row>
+							<ion-col size="4">
+								Thrones
+							</ion-col>
+							<ion-col size="4">
+								Crowns
+							</ion-col>
+							<ion-col size="4">
+								Rings
+							</ion-col>
+						</ion-row>
+					</ion-col>
+					<ion-col class="Type">Type</ion-col>
+					<ion-col class="Options">Options</ion-col>
+				</ion-row>
+				<ion-row class="Materials" *ngFor="let _Material of _DataService.MaterialData">
+					<ion-col class="Name">{{_Material.Name}}</ion-col>
+					<ion-col class="Price">
+						<ion-row>
+							<ion-col size="4">
+								<ion-input type="number" min="0" [value]="_Material.Price.Thrones" id="{{_Material.PageID}}-Thrones"></ion-input>
+							</ion-col>
+							<ion-col size="4">
+								<ion-input type="number" min="0" max="7" [value]="_Material.Price.Crowns" id="{{_Material.PageID}}-Crowns"></ion-input>
+							</ion-col>
+							<ion-col size="4">
+								<ion-input type="number" min="0" max="19" [value]="_Material.Price.Rings" id="{{_Material.PageID}}-Rings"></ion-input>
+							</ion-col>
+						</ion-row>
+					</ion-col>
+					<ion-col class="Type">{{_Material.Type}}</ion-col>
+					<ion-col class="Options">
+						<ion-buttons>
+							<ion-button (click)="Save($event, _Material)">
+								<ion-icon name="save-outline"></ion-icon>
+							</ion-button>
+						</ion-buttons>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</ion-item>
+	</ion-list>
+</ion-content>

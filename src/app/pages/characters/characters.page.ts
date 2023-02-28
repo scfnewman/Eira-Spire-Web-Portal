@@ -45,7 +45,7 @@ export class CharactersPage implements OnInit {
 
 	GetRankString(Rank) {
 		if (Rank == 0) return 'Thane';
-		if (Rank == 1) return 'Head Advisor';
+		if (Rank == 1) return 'Head Adviser';
 		if (Rank == 2) return 'Stone Circle';
 		if (Rank == 3) return 'Guard';
 		if (Rank == 4) return 'Citizen';

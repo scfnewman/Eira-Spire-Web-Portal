@@ -2,7 +2,7 @@
 
 <ion-content>
 	<ion-list>
-		<ion-item>
+		<ion-item lines="full" class="title">
 			<ion-title color="secondary">Characters</ion-title>
 		</ion-item>
 		<ion-item lines="none">
@@ -22,7 +22,7 @@
 					<ion-col>Rank</ion-col>
 					<ion-col class="Options">Options</ion-col>
 				</ion-row>
-				<ion-row class="Characters" *ngFor="let _Character of _DataService.CharacterData">
+				<ion-row class="Characters" *ngFor="let _Character of _DataService.CharacterData | characterSort">
 					<ion-col class="Status">{{_Character.Alive ? (_Character.Retired ? "Retired" : "Alive") : "Dead"}}</ion-col>
 					<ion-col>{{_Character.FirstName}} {{_Character.LastName}}</ion-col>
 					<ion-col>{{_Character.EarnedName}}</ion-col>

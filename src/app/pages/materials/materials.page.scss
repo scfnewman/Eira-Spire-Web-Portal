@@ -1,0 +1,36 @@
+.Name {
+	max-width: 280px;
+}
+
+.Type {
+	//max-width: 140px;
+}
+
+.Price {
+	padding-top: 0;
+	padding-bottom: 0;
+	max-width: 300px;
+}
+
+.Options {
+	max-width: 70px;
+}
+
+.Labels {
+	color: var(--ion-color-secondary);
+}
+
+.Materials {
+	min-height: 50px;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid rgba(var(--ion-color-primary-rgb), 0.2);
+	color: var(--ion-color-secondary-shade);
+}
+
+ion-grid {
+	margin-top: 10px;
+	padding: 10px;
+	border: 1px solid rgba(var(--ion-color-primary-rgb), 0.2);
+	border-radius: 5px;
+}

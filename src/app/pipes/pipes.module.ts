@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SkillSortPipe } from './skill-sort.pipe';
 import { CategorySortPipe } from './category-sort.pipe';
+import { PageSortPipe } from './page-sort.pipe';
+import { CharacterSortPipe } from './character-sort.pipe';
 
 
 
@@ -9,13 +11,17 @@ import { CategorySortPipe } from './category-sort.pipe';
 	declarations: [
 		SkillSortPipe,
 		CategorySortPipe,
+  		PageSortPipe,
+   	 	CharacterSortPipe,
 	],
 	imports: [
 		CommonModule
 	],
 	exports: [
 		SkillSortPipe,
-		CategorySortPipe
+		CategorySortPipe,
+		PageSortPipe,
+		CharacterSortPipe
 	]
 })
 export class PipesModule { }

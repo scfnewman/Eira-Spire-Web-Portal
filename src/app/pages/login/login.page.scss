@@ -13,8 +13,7 @@
 }
 
 ion-content {
-	--background: var(--ion-color-secondary-shade);
-	--background: -webkit-linear-gradient(-45deg, var(--ion-color-secondary-shade) 0%,var(--ion-color-secondary) 33%,var(--ion-color-primary-shade) 66%,var(--ion-color-primary) 100%);
+	--background: var(--ion-color-secondary);
 }
 
 form {
@@ -27,10 +26,11 @@ ion-label {
 }
 
 ion-input {
-	--background: var(--ion-color-secondary);
+	--background: var(--ion-color-secondary-shade);
 	border-radius: 5px;
 	color: var(--ion-color-tertiary);
 	margin-bottom: 5px;
+	--padding-start: 10px;
 }
 
 .buttons {

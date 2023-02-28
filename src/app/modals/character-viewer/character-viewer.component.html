@@ -8,77 +8,85 @@
 </ion-header>
 
 <ion-content>
-	<ion-card>
-		<ion-card-header>
-			<ion-card-title>{{Data.FirstName}} {{Data.LastName}}</ion-card-title>
-			<ion-card-subtitle>{{Data.EarnedName}}</ion-card-subtitle>
-		</ion-card-header>
-		<ion-card-content>
-			<ion-list>
-				<ion-item>
-					{{Data.Identity}}
-				</ion-item>
-				<ion-item>
-					Age: {{Data.Age}}
-				</ion-item>
-				<ion-item>
-					Pronouns: {{Data.Gender}}
-				</ion-item>
-				<ion-item>
-					Virtue: {{Data.Virtue}}
-				</ion-item>
-				<ion-item>
-					Lineage: {{Data.Lineage}}
-				</ion-item>
-				<ion-item>
-					<div class="skills" (click)="$event.stopPropagation()">
-						<ion-chip outline="true" *ngFor="let _Skill of Data.Skills">
+	<div class="page">
+		<h1>{{Data.FirstName}} {{Data.LastName}}</h1>
+		<h2 [class]="Data.EarnedName ? 'gold' : ''">{{Data.EarnedName ? Data.EarnedName : Data.Identity}}</h2>
+
+		<ion-list>
+			<ion-item>
+				Rank: <span class="right">{{GetRankString(Data.Rank)}}</span>
+			</ion-item>
+			<ion-item>
+				Age: <span class="right">{{Data.Age}}</span>
+			</ion-item>
+			<ion-item>
+				Pronouns: <span class="right">{{Data.Gender}}</span>
+			</ion-item>
+			<ion-item>
+				Virtue: <span class="right">{{Data.Virtue}}</span>
+			</ion-item>
+			<ion-item>
+				Lineage: <span class="right">{{Data.Lineage}}</span>
+			</ion-item>
+			<ion-item>
+				<div class="Skills" (click)="$event.stopPropagation()">
+					<ion-chip outline="true" *ngFor="let _Skill of Data.Skills">
+						<ion-label>
 							{{_Skill.Name}}<span *ngIf="_Skill.Count > 1">&nbsp;x{{_Skill.Count}}</span>
-						</ion-chip>
-					</div>
-				</ion-item>
-				<ion-item *ngIf="IsApothecary()">
-					<div class="potions" (click)="$event.stopPropagation()">
-						<ion-chip outline="true" *ngFor="let _Potion of Data.Potions">
-							{{_Potion.Name}}
-						</ion-chip>
-					</div>
-				</ion-item>
-				<ion-item *ngIf="IsMagician()">
-					<div class="spells" (click)="$event.stopPropagation()">
-						<ion-chip outline="true" *ngFor="let _Spell of Data.Spells">
-							{{_Spell.Name}}<span *ngIf="_Spell.Count > 1">&nbsp;x{{_Spell.Count}}</span>
-						</ion-chip>
-					</div>
-				</ion-item>
-			</ion-list>
-			<p class="Description" *ngIf="Data.Alive" [innerHTML]="Data.Summary">
-			</p>
-			<p class="Description" *ngIf="!Data.Alive" [innerHTML]="Data.DeathStory">
-			</p>
-		</ion-card-content>
-	</ion-card>
+						</ion-label>
+					</ion-chip>
+				</div>
+			</ion-item>
+		</ion-list>
 
-	<ion-card>
-		<ion-card-header>
-			<ion-card-title>Background</ion-card-title>
-		</ion-card-header>
-		<ion-card-content [innerHTML]="Data.Details.Background">
-		</ion-card-content>
-	</ion-card>
+		<section *ngIf="Data.Summary">
+			<h1>Summary
+				<span class="right">
+					<ion-icon *ngIf="!HideSummary" (click)="HideSummary = true" name="chevron-up"></ion-icon>
+					<ion-icon *ngIf="HideSummary" (click)="HideSummary = false" name="chevron-down"></ion-icon>
+				</span>
+			</h1>
+			<div [innerHTML]="this._Sanitizer.bypassSecurityTrustHtml(Data.Summary)" [class]="HideSummary ? 'hidden' : ''"></div>
+		</section>
 
-	<ion-card *ngIf="Data.EarnedName">
-		<ion-card-header>
-			<ion-card-title>{{Data.EarnedName}}</ion-card-title>
-		</ion-card-header>
-		<ion-card-content [innerHTML]="Data.Details.NameStory">
-		</ion-card-content>
-	</ion-card>
+		<section *ngIf="Data.DeathStory">
+			<h1>Death
+				<span class="right">
+					<ion-icon *ngIf="!HideDeath" (click)="HideDeath = true" name="chevron-up"></ion-icon>
+					<ion-icon *ngIf="HideDeath" (click)="HideDeath = false" name="chevron-down"></ion-icon>
+				</span>
+			</h1>
+			<div [innerHTML]="this._Sanitizer.bypassSecurityTrustHtml(Data.DeathStory)" [class]="HideDeath ? 'hidden' : ''"></div>
+		</section>
 
-	<ion-card *ngFor="let _Section of Data.Sections">
-		<ion-card-header>
-			<ion-card-title>{{_Section.Heading}}</ion-card-title>
-		</ion-card-header>
-		<ion-card-content [innerHTML]="_Section.Body"></ion-card-content>
-	</ion-card>
+		<section *ngIf="Data.Details.Background">
+			<h1>Background
+				<span class="right">
+					<ion-icon *ngIf="!HideBackground" (click)="HideBackground = true" name="chevron-up"></ion-icon>
+					<ion-icon *ngIf="HideBackground" (click)="HideBackground = false" name="chevron-down"></ion-icon>
+				</span>
+			</h1>
+			<div [innerHTML]="this._Sanitizer.bypassSecurityTrustHtml(Data.Details.Background)" [class]="HideBackground ? 'hidden' : ''"></div>
+		</section>
+
+		<section *ngIf="Data.EarnedName">
+			<h1 class="gold">{{Data.EarnedName}}
+				<span class="right">
+					<ion-icon *ngIf="!HideEarnedName" (click)="HideEarnedName = true" name="chevron-up"></ion-icon>
+					<ion-icon *ngIf="HideEarnedName" (click)="HideEarnedName = false" name="chevron-down"></ion-icon>
+				</span>
+			</h1>
+			<div [innerHTML]="this._Sanitizer.bypassSecurityTrustHtml(Data.Details.NameStory)" [class]="HideEarnedName ? 'hidden' : ''"></div>
+		</section>
+
+		<section *ngFor="let _Section of Data.Sections; index as i">
+			<h1>{{_Section.Heading}}
+				<span class="right">
+					<ion-icon *ngIf="!HideSections[i]" (click)="HideSections[i] = true" name="chevron-up"></ion-icon>
+					<ion-icon *ngIf="HideSections[i]" (click)="HideSections[i] = false" name="chevron-down"></ion-icon>
+				</span>
+			</h1>
+			<div [innerHTML]="this._Sanitizer.bypassSecurityTrustHtml(_Section.Body)" [class]="HideSections[i] ? 'hidden' : ''"></div>
+		</section>
+	</div>
 </ion-content>

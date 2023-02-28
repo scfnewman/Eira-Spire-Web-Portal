@@ -40,7 +40,7 @@ ion-header {
 
 ion-header ion-toolbar {
 	--min-height: 80px;
-	--background: var(--ion-color-secondary);
+	--background: var(--ion-color-secondary-shade);
 	color: var(--ion-color-tertiary);
 }
 
@@ -55,4 +55,81 @@ ion-popover {
 
 .required {
 	color: var(--ion-color-danger);
+}
+
+ion-item.title {
+	--padding-start: 0px;
+}
+
+.page {
+	width: 100%;
+	min-height: 100%;
+	background-color: var(--ion-color-secondary);
+	color: var(--ion-color-tertiary);
+	padding: 15px;
+
+	ion-list, ion-item {
+		--background: none;
+		background: none;
+		color: var(--ion-color-tertiary);
+	}
+
+	ion-chip {
+		--color: var(--ion-color-tertiary);
+	}
+
+	h1 {
+		margin: 20px auto 0;
+	}
+	
+	h2 {
+		font-size: 0.9rem;
+		margin: 0;
+		font-weight: bold;
+		text-transform: uppercase;
+		color: var(--ion-color-primary-tint);
+	}
+	
+	h3 {
+		font-size: 0.7rem;
+		margin: 0;
+		font-weight: bold;
+		text-transform: uppercase;
+		color: var(--ion-color-secondary-tint);
+	}
+
+	div {
+		&.hidden {
+			display: none;
+		}
+	}
+
+	.right {
+		text-align: right;
+		float: right;
+		margin-left: auto;
+	}
+
+	.gold {
+		color: gold;
+	}	
+
+	iframe {
+		width: 100%;
+	}
+
+	.iframe-container {
+		width: 100%;
+		height: 50px;
+		position: relative;
+		box-sizing: border-box;
+		padding: 28.125%;
+
+		iframe {
+			position: absolute;
+			height: 100%;
+			top: 0;
+			left: 0;
+		}
+	}	
 }

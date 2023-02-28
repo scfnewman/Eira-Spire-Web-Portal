@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -14,6 +14,8 @@ export class DataService {
 	PageData;
 	UserData;
 	AssetData;
+	ArtisanData;
+	MaterialData;
 
 	constructor(
 		private _FireStore: AngularFirestore
@@ -38,6 +40,12 @@ export class DataService {
 		})
 		this._FireStore.collection<any>('assets').valueChanges().subscribe(data => {
 			this.AssetData = data;
+		})
+		this._FireStore.collection<any>('artisan').valueChanges().subscribe(data => {
+			this.ArtisanData = data;
+		})
+		this._FireStore.collection<any>('materials').valueChanges().subscribe(data => {
+			this.MaterialData = data;
 		})
 	}
 
@@ -99,5 +107,21 @@ export class DataService {
 
 	UpdateAsset(Data) {
 		this._FireStore.doc<any>('assets/' + Data.PageID).update(Data);
+	}
+
+	AddArtisanRecipe(Data) {
+		this._FireStore.doc<any>('artisan/' + Data.PageID).set(Data);
+	}
+
+	UpdateArtisanRecipe(Data) {
+		this._FireStore.doc<any>('artisan/' + Data.PageID).update(Data);
+	}
+
+	AddMaterial(Data) {
+		this._FireStore.doc<any>('materials/' + Data.PageID).set(Data);
+	}
+
+	UpdateMaterial(Data) {
+		this._FireStore.doc<any>('materials/' + Data.PageID).update(Data);
 	}
 }

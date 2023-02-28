@@ -1,0 +1,12 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>
+			Artsian Recipe Editor
+		</ion-title>
+		<ion-buttons slot="end">
+			<ion-text *ngIf="Error" color="danger">Please fill in the required fields before saving!</ion-text>
+			<ion-button (click)="Submit()">Save</ion-button>
+			<ion-button (click)="DismissModal()">Exit</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>

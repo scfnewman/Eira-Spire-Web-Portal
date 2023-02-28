@@ -8,21 +8,22 @@
 </ion-header>
 
 <ion-content>
-	<ion-card>
-		<ion-card-header>
-			<ion-card-subtitle>{{Data.Category}} | {{Data.Author}}<span class="ion-float-right">{{Data.LastEdited}}</span></ion-card-subtitle>
-			<ion-card-title>{{Data.Title}}</ion-card-title>
-			<ion-card-subtitle>{{Data.Subtitle}}</ion-card-subtitle>
-		</ion-card-header>
-		
-		<ion-card-content [innerHTML]="Data.Body">
-		</ion-card-content>
-	</ion-card>
+	<div class="page">
+		<h1>{{Data.Title}}</h1>
+		<h2>{{Data.Subtitle}}</h2>
+		<h3>By {{Data.Author}} | {{Data.Category}}</h3>
 
-	<ion-card *ngFor="let _Section of Data.Sections">
-		<ion-card-header>
-			<ion-card-title>{{_Section.Heading}}</ion-card-title>
-		</ion-card-header>
-		<ion-card-content [innerHTML]="_Section.Body"></ion-card-content>
-	</ion-card>
+		<section *ngIf="Data.Body" [innerHTML]="this._Sanitizer.bypassSecurityTrustHtml(Data.Body)">
+		</section>
+
+		<section *ngFor="let _Section of Data.Sections; index as i">
+			<h1>{{_Section.Heading}}
+				<span class="right">
+					<ion-icon *ngIf="!HideSections[i]" (click)="HideSections[i] = true" name="chevron-up"></ion-icon>
+					<ion-icon *ngIf="HideSections[i]" (click)="HideSections[i] = false" name="chevron-down"></ion-icon>
+				</span>
+			</h1>
+			<div [innerHTML]="this._Sanitizer.bypassSecurityTrustHtml(_Section.Body)" [class]="HideSections[i] ? 'hidden' : ''"></div>
+		</section>
+	</div>
 </ion-content>

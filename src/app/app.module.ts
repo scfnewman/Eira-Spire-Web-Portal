@@ -3,8 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -55,110 +53,77 @@ import { SpellsPage } from './pages/spells/spells.page';
 import { PipesModule } from './pipes/pipes.module';
 import { DatePipe } from '@angular/common';
 
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { FirebaseConfig } from 'src/credentials';
 import { EditorModule } from '@tinymce/tinymce-angular';
+import { ArtisanPage } from './pages/artisan/artisan.page';
+import { ArtisanEditorModal } from './modals/artisan-editor/artisan-editor.component';
+import { ArtisanViewerModal } from './modals/artisan-viewer/artisan-viewer.component';
+import { MaterialsPage } from './pages/materials/materials.page';
 
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		AssetsPage,
-		CharactersPage,
-		HelpPage,
-		HomePage,
-		LoginPage,
-		PagesPage,
-		PasswordRecoveryPage,
-		PlayersPage,
-		PotionsPage,
-		SettingsPage,
-		SignupPage,
-		SkillsPage,
-		SpellsPage,
-
-		CharacterEditorModal,
-		PageEditorModal,
-		PotionEditorModal,
-		SkillEditorModal,
-		SpellEditorModal,
-		AssetEditorModal,
-		CharacterViewerModal,
-		PageViewerModal,
-		PotionViewerModal,
-		SkillViewerModal,
-		SpellViewerModal,
-		AssetViewerModal,
-		EditorModal,
-		SecurityModal,
-
-		HeaderComponent,
-		OptionsPopoverComponent,
-		SkillsPopoverComponent,
-		PotionsPopoverComponent,
-		SpellsPopoverComponent,
-		PotionCategoryPopoverComponent
-	],
-	entryComponents: [
-		AssetsPage,
-		CharactersPage,
-		HelpPage,
-		HomePage,
-		LoginPage,
-		PagesPage,
-		PasswordRecoveryPage,
-		PlayersPage,
-		PotionsPage,
-		SettingsPage,
-		SignupPage,
-		SkillsPage,
-		SpellsPage,
-
-		CharacterEditorModal,
-		PageEditorModal,
-		PotionEditorModal,
-		SkillEditorModal,
-		SpellEditorModal,
-		AssetEditorModal,
-		CharacterViewerModal,
-		PageViewerModal,
-		PotionViewerModal,
-		SkillViewerModal,
-		SpellViewerModal,
-		AssetViewerModal,
-		EditorModal,
-		SecurityModal,
-
-		HeaderComponent,
-		OptionsPopoverComponent,
-		SkillsPopoverComponent,
-		PotionsPopoverComponent,
-		SpellsPopoverComponent,
-		PotionCategoryPopoverComponent
-	],
-	imports: [
-		BrowserModule,
-		IonicModule.forRoot(),
-		AppRoutingModule,
-		ReactiveFormsModule,
-		FormsModule,
-		PipesModule,
-		AngularFireAuthModule,
-		AngularFireModule.initializeApp(FirebaseConfig),
-		AngularFirestoreModule,
-		EditorModule
-	],
-	providers: [
-		StatusBar,
-		SplashScreen,
-		{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-		AuthGuard,
-		AuthService,
-		DataService,
-		DatePipe,
-	],
-	bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        AssetsPage,
+        CharactersPage,
+        HelpPage,
+        HomePage,
+        LoginPage,
+        PagesPage,
+        PasswordRecoveryPage,
+        PlayersPage,
+        PotionsPage,
+        SettingsPage,
+        SignupPage,
+        SkillsPage,
+        SpellsPage,
+        ArtisanPage,
+		MaterialsPage,
+        CharacterEditorModal,
+        PageEditorModal,
+        PotionEditorModal,
+        SkillEditorModal,
+        SpellEditorModal,
+        AssetEditorModal,
+        ArtisanEditorModal,
+        CharacterViewerModal,
+        PageViewerModal,
+        PotionViewerModal,
+        SkillViewerModal,
+        SpellViewerModal,
+        AssetViewerModal,
+        ArtisanViewerModal,
+        EditorModal,
+        SecurityModal,
+        HeaderComponent,
+        OptionsPopoverComponent,
+        SkillsPopoverComponent,
+        PotionsPopoverComponent,
+        SpellsPopoverComponent,
+        PotionCategoryPopoverComponent
+    ],
+    imports: [
+        BrowserModule,
+        IonicModule.forRoot({mode: "ios"}),
+        AppRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        PipesModule,
+        AngularFireAuthModule,
+        AngularFireModule.initializeApp(FirebaseConfig),
+        AngularFirestoreModule,
+        EditorModule
+    ],
+    providers: [
+        { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+        AuthGuard,
+        AuthService,
+        DataService,
+        DatePipe,
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

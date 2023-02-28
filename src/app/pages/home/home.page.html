@@ -1,28 +1,13 @@
 <app-header></app-header>
 
 <ion-content>
-	<ion-list>
-		<ion-item>
-			<ion-title color="secondary">Welcome, {{_AuthService.UserData.FirstName}}.</ion-title>
-		</ion-item>
-	</ion-list>
+	
 	<div class="content">
-		<h3>Welcome to the Eira Spire web portal!</h3>
+		<h2>Welcome, {{_AuthService.UserData.FirstName}}.</h2>
+		<h3>Welcome to the Eira Spire Library!</h3>
 		<h1 *ngIf="_Platform.is('mobile')">This site is best viewed on desktop!</h1>
 		<h4>What's this for?</h4>
-		<p>On this site you can edit the content in the database behind the Eira Spire App.</p>
-		<h4>Why does this exist?</h4>
-		<p>As part of my new job I've been building Mobile Apps, and I had the idea that it would be cool for Eira Spire
-			to have an app that acts as an offical repository of information that newcomers to the Hall could download
-			and look at without having to give strangers the link to the OneNote.</p>
-		<p>After building the App I decided that it would be better for the content to be dynamic rather than hard coded
-			so I setup a database for it to pull the data from. This had the problem of being a pain to edit and wasn't
-			accessible to others, so I built this Portal to act as a backend for the mobile App that can be accessed by
-			anyone.</p>
-		<p>This site is best viewed on Desktop. You can use a mobile web browser, but the interface is not designed with
-			that in mind.</p>
-		<p>If you encounter any issues or have any questions, contact Simon. Don't hesitate to offer suggestions for
-			improvement</p>
+		<p>The Eira Spire App is used as Eira Spire's official library of information regarding the hall and other things. This site is used to edit the contents of the Library.</p>
 		<ion-card>
 			<ion-card-header>
 				<ion-card-title>Development</ion-card-title>
@@ -31,27 +16,28 @@
 						Repository</a></ion-card-subtitle>
 			</ion-card-header>
 			<ion-card-content>
-				<h2>Upcoming Features</h2>
-				<ul>
-					<li>Profile Settings</li>
-					<li>Pre-defined Page Categories</li>
-					<li>"Branded" password reset and email verification pages</li>
-					<li>App style page and character viewers</li>
-					<li>Mobile Web Browser interface pass</li>
-					<li>Dynamic Editor Schemas for greater control</li>
-				</ul>
-				<h2>Known Issues</h2>
-				<ul>
-					<li>
-						Some buttons don't work properly on mobile web browsers
-					</li>
-					<li>
-						Using mouse scroll in skills/potions/spells popover window doesn't work
-					</li>
-				</ul>
-
 				<h2>Change Log</h2>
 				<ul class="changelog">
+					<li>
+						<h3>v.1.3.0</h3>
+						<ul>
+							<li>Updated framework and packages to the latest versions</li>
+							<li>Code Cleanup</li>
+							<li>Style Changes</li>
+							<li>Added: Persistent login
+								<ul>
+									<li>It utilises Firebase's Persistent login features so it's secure.</li>
+								</ul>
+							</li>
+							<li>Added: Pages for Artisan Recipes and Materials
+								<ul>
+									<li>Recipes for Potions will be updated to use the new Material data at some point</li>
+									<li>Artisan Recipes are currently under develpment</li>
+								</ul>
+							</li>
+							<li>Removed: "Assets" page</li>							
+						</ul>
+					</li>
 					<li>
 						<h4>v.1.2.5</h4>
 						<ul>

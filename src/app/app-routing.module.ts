@@ -13,7 +13,9 @@ import { SettingsPage } from './pages/settings/settings.page';
 import { SignupPage } from './pages/signup/signup.page';
 import { SkillsPage } from './pages/skills/skills.page';
 import { SpellsPage } from './pages/spells/spells.page';
+import { ArtisanPage } from './pages/artisan/artisan.page';
 import { AuthGuard } from './services/auth.guard';
+import { MaterialsPage } from './pages/materials/materials.page';
 
 const routes: Routes = [
 	{
@@ -86,6 +88,16 @@ const routes: Routes = [
 	{
 		path: 'assets',
 		component: AssetsPage,
+		canActivate: [AuthGuard]
+	},
+	{
+		path: 'artisan',
+		component: ArtisanPage,
+		canActivate: [AuthGuard]
+	},
+	{
+		path: 'materials',
+		component: MaterialsPage,
 		canActivate: [AuthGuard]
 	},
 ];

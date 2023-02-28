@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
-
-import { AngularFireAuth } from '@angular/fire/auth';
-import firebase from 'firebase';
-import { Observable } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { DataService } from './data.service';
 
 @Injectable({
@@ -16,17 +13,20 @@ export class AuthService {
 	constructor(
 		private _FirebaseAuth: AngularFireAuth,
 		private _DataService: DataService
-	) { }
+	) {
+	}
 
 	async Login(_Email: string, _Password: string): Promise<any> {
 		return new Promise<void>((resolve, reject) => {
-			this._FirebaseAuth.signInWithEmailAndPassword(_Email, _Password)
-				.then(value => {
-					resolve();
-				})
-				.catch(err => {
-					reject(false);
-				});
+			this._FirebaseAuth.setPersistence("local").then(() => {
+				this._FirebaseAuth.signInWithEmailAndPassword(_Email, _Password)
+					.then(value => {
+						resolve();
+					})
+					.catch(err => {
+						reject(false);
+					});
+			});
 		})
 	}
 
@@ -42,7 +42,7 @@ export class AuthService {
 									LastName: _LastName,
 									Verified: false
 								}
-								
+
 								this._DataService.AddUserData(User.uid, Data);
 								resolve()
 							})
@@ -66,23 +66,23 @@ export class AuthService {
 
 	isAuthenticated() {
 		return new Promise<void>((resolve, reject) => {
-			this._FirebaseAuth.currentUser.then(User => {
-				if (User) resolve();
-				else reject();
-			}).catch(err => {
+			this._FirebaseAuth.onAuthStateChanged((_User) => {
+				this.GetUserData().then(() => {
+					resolve();
+				});				
+			}, (_Error => {
 				reject();
-			})
+			}));
 		})
 
 	}
 
 	GetUserInfo(): Promise<any> {
 		return new Promise<void>((resolve) => {
-			this._FirebaseAuth.currentUser.then(User => {
-				this.UserInfo = User;
+			this._FirebaseAuth.onAuthStateChanged(_User => {
+				this.UserInfo = _User;
 				resolve();
 			});
-
 		});
 	}
 
@@ -94,9 +94,6 @@ export class AuthService {
 					resolve();
 				})
 			});
-
-
-			
 		});
 	}
 

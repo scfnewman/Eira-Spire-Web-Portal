@@ -2,7 +2,7 @@
 
 <ion-content>
 	<ion-list>
-		<ion-item>
+		<ion-item lines="full" class="title">
 			<ion-title color="secondary">Pages</ion-title>
 		</ion-item>
 		<ion-item lines="none">
@@ -18,7 +18,7 @@
 					<ion-col>Last Edited</ion-col>
 					<ion-col class="Options">Options</ion-col>
 				</ion-row>
-				<ion-row class="Data" *ngFor="let _Page of _DataService.PageData">
+				<ion-row class="Data" *ngFor="let _Page of _DataService.PageData | pageSort">
 					<ion-col class="Category">{{_Page.Category}}</ion-col>
 					<ion-col>{{_Page.Title}}</ion-col>
 					<ion-col>{{_Page.Subtitle}}</ion-col>
