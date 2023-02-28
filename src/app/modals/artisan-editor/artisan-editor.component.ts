@@ -8,11 +8,17 @@ import { ModalController } from '@ionic/angular';
 })
 export class ArtisanEditorModal implements OnInit {
 
+	Error: boolean = false;
+
 	constructor(
 		private _ModalCtrl: ModalController
 	) { }
 
 	ngOnInit() { }
+
+	Submit() {
+
+	}
 
 	DismissModal() {
 		this._ModalCtrl.dismiss();
