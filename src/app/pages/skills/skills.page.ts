@@ -5,6 +5,7 @@ import { ModalController, PopoverController } from '@ionic/angular';
 import { OptionsPopoverComponent } from 'src/app/components/options-popover/options-popover.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { SkillEditorModal } from 'src/app/modals/skill-editor/skill-editor.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
 	selector: 'app-skills',
@@ -17,7 +18,8 @@ export class SkillsPage implements OnInit {
 		public _DataService: DataService,
 		public _ModalCtrl: ModalController,
 		public _PopCtrl: PopoverController,
-		public _AuthService: AuthService
+		public _AuthService: AuthService,
+		public _DatePipe: DatePipe
 	) { }
 
 	ngOnInit() {

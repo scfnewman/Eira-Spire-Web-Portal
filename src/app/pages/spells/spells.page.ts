@@ -5,6 +5,7 @@ import { ModalController, PopoverController } from '@ionic/angular';
 import { OptionsPopoverComponent } from 'src/app/components/options-popover/options-popover.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { SpellEditorModal } from 'src/app/modals/spell-editor/spell-editor.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-spells',
@@ -17,7 +18,8 @@ export class SpellsPage implements OnInit {
 		public _DataService: DataService,
 		public _ModalCtrl: ModalController,
 		public _PopCtrl: PopoverController,
-		public _AuthService: AuthService
+		public _AuthService: AuthService,
+		public _DatePipe: DatePipe
 	) { }
 
 	ngOnInit() {

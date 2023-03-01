@@ -15,6 +15,7 @@
 					<ion-col class="Name">Name</ion-col>
 					<ion-col class="Form">Mana Cost</ion-col>
 					<ion-col></ion-col>
+					<ion-col>Last Update</ion-col>
 					<ion-col class="Options">Options</ion-col>
 				</ion-row>
 				<ion-row class="Spells" *ngFor="let _Spell of _DataService.SpellData | skillSort">
@@ -22,6 +23,7 @@
 					<ion-col class="Name">{{_Spell.Name}}</ion-col>
 					<ion-col class="Form">{{_Spell.Cost}}</ion-col>
 					<ion-col></ion-col>
+					<ion-col>{{_DatePipe.transform(_Spell.LastUpdate, 'd/M/yy, h:mm a')}}</ion-col>
 					<ion-col class="Options">
 						<ion-buttons>
 							<ion-button (click)="OpenOptions($event, _Spell)">

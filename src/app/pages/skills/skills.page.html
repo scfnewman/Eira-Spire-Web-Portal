@@ -15,6 +15,7 @@
 					<ion-col class="Name">Name</ion-col>
 					<ion-col class="Form">Cost</ion-col>
 					<ion-col></ion-col>
+					<ion-col>Last Update</ion-col>
 					<ion-col class="Options">Options</ion-col>
 				</ion-row>
 				<ion-row class="Skills" *ngFor="let _Skill of _DataService.SkillData | skillSort">
@@ -22,6 +23,7 @@
 					<ion-col class="Name">{{_Skill.Name}}</ion-col>
 					<ion-col class="Form">{{_Skill.Cost}}</ion-col>
 					<ion-col></ion-col>
+					<ion-col>{{_DatePipe.transform(_Skill.LastUpdate, 'd/M/yy, h:mm a')}}</ion-col>
 					<ion-col class="Options">
 						<ion-buttons>
 							<ion-button (click)="OpenOptions($event, _Skill)">

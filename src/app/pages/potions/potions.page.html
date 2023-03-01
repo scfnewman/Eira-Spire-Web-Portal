@@ -15,6 +15,7 @@
 					<ion-col class="Name">Name</ion-col>
 					<ion-col class="Form">Form</ion-col>
 					<ion-col></ion-col>
+					<ion-col>Last Update</ion-col>
 					<ion-col class="Options">Options</ion-col>
 				</ion-row>
 				<ion-row class="Potions" *ngFor="let _Potion of _DataService.PotionData | skillSort">
@@ -22,6 +23,7 @@
 					<ion-col class="Name">{{_Potion.Name}}</ion-col>
 					<ion-col class="Form">{{_Potion.Form}}</ion-col>
 					<ion-col></ion-col>
+					<ion-col>{{_DatePipe.transform(_Potion.LastUpdate, 'd/M/yy, h:mm a')}}</ion-col>
 					<ion-col class="Options">
 						<ion-buttons>
 							<ion-button (click)="OpenOptions($event, _Potion)">

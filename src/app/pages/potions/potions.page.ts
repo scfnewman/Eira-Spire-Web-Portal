@@ -5,6 +5,7 @@ import { ModalController, PopoverController } from '@ionic/angular';
 import { OptionsPopoverComponent } from 'src/app/components/options-popover/options-popover.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { PotionEditorModal } from 'src/app/modals/potion-editor/potion-editor.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
 	selector: 'app-potions',
@@ -17,7 +18,8 @@ export class PotionsPage implements OnInit {
 		public _DataService: DataService,
 		public _ModalCtrl: ModalController,
 		public _PopCtrl: PopoverController,
-		public _AuthService: AuthService
+		public _AuthService: AuthService,
+		public _DatePipe: DatePipe
 	) { }
 
 	ngOnInit() {
