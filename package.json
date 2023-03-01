@@ -4,12 +4,10 @@
 	"author": "Ionic Framework",
 	"homepage": "https://ionicframework.com/",
 	"scripts": {
-		"ng": "ng",
-		"start": "ng serve",
-		"build": "ng build",
-		"test": "ng test",
-		"lint": "ng lint",
-		"e2e": "ng e2e"
+		"build": "ionic build",
+		"prod": "ionic build prod",
+		"serve": "ionic serve",
+		"deploy": "npm run prod; firebase deploy"
 	},
 	"private": true,
 	"dependencies": {

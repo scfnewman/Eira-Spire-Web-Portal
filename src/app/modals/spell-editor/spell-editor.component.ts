@@ -53,7 +53,7 @@ export class SpellEditorModal implements OnInit {
 			this.SpellSections.forEach(Section => {
 				let Data = {
 					Heading: Section.value.Heading,
-					Body: Section.value.Body
+					Body: this._DataService.RemovePreformatting(Section.value.Body)
 				}
 
 				SectionsData.push(Data);
@@ -63,8 +63,8 @@ export class SpellEditorModal implements OnInit {
 				Category: Data.Category,
 				Name: Data.Name,
 				Cost: Data.Cost,
-				Description: Data.Description,
-				Effects: Data.Effects,
+				Description: this._DataService.RemovePreformatting(Data.Description),
+				Effects: this._DataService.RemovePreformatting(Data.Effects),
 				Sections: SectionsData,
 				PageID: this.Data ? this.Data.PageID : Data.Name.replace(/\s/g, "-").toUpperCase(),
 				LastUpdate: Date.now()

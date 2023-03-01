@@ -47,13 +47,13 @@ export class PotionEditorModal implements OnInit {
 			let Details = {
 				Category: Data.Category,
 				Name: Data.Name,
-				Definition: Data.Definition,
+				Definition: this._DataService.RemovePreformatting(Data.Definition),
 				Form: Data.Form,
-				Description: Data.Description,
-				RoleplayingEffect: Data.RoleplayingEffect,
-				MechanicalEffect: Data.MechanicalEffect,
-				Recipe: Data.Recipe,
-				Notes: Data.Notes,
+				Description: this._DataService.RemovePreformatting(Data.Description),
+				RoleplayingEffect: this._DataService.RemovePreformatting(Data.RoleplayingEffect),
+				MechanicalEffect: this._DataService.RemovePreformatting(Data.MechanicalEffect),
+				Recipe: this._DataService.RemovePreformatting(Data.Recipe),
+				Notes: this._DataService.RemovePreformatting(Data.Notes),
 				PageID: (this.Data && this.Data.PageID) ? this.Data.PageID : Data.Name.replace(/\s/g, "-").toUpperCase(),
 				LastUpdate: Date.now()
 			}

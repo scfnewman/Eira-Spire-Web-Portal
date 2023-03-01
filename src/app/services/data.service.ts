@@ -124,4 +124,16 @@ export class DataService {
 	UpdateMaterial(Data) {
 		this._FireStore.doc<any>('materials/' + Data.PageID).update(Data);
 	}
+
+	/**
+	 * Removes the inline styling applied when copying directly from a Wiki Page
+	 * @param _String String to remove styling from
+	 * @returns Cleaned string
+	 */
+	RemovePreformatting(_String: string) {
+		_String = _String.replace(/style="margin: 0px 0px 22px; font-size: 16px; line-height: 24px; color: #333333; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #ffffff;"/gm, "");
+		_String = _String.replace(/style="color: #333333; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; background-color: #ffffff;"/gm, "");
+		_String = _String.replace(/style="color: #0088cc; text-decoration-line: none; position: relative; z-index: 100;"/gm, "");
+		return _String.replace(/style="color: #0088cc; text-decoration-line: none; position: relative; z-index: 100; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; background-color: #ffffff;"/gm, "");
+	}
 }

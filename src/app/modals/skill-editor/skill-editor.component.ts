@@ -43,7 +43,7 @@ export class SkillEditorModal implements OnInit {
 				Category: Data.Category,
 				Name: Data.Name,
 				Cost: Data.Cost,
-				Description: Data.Description,
+				Description: this._DataService.RemovePreformatting(Data.Description),
 				PageID: (this.Data && this.Data.PageID) ? this.Data.PageID : Data.Name.replace(/\s/g, "-").toUpperCase(),
 				LastUpdate: Date.now()
 			}
