@@ -10,3 +10,80 @@
 		</ion-buttons>
 	</ion-toolbar>
 </ion-header>
+
+<ion-content>
+	<form [formGroup]="ArtisanData">
+		<ion-toolbar>
+			<ion-title>
+				Details
+			</ion-title>
+		</ion-toolbar>
+		<ion-list>
+			<ion-item>
+				<ion-label>Name<span class="required">*</span></ion-label>
+				<ion-input placeholder="Item Name" formControlName="Name"></ion-input>
+			</ion-item>
+			<ion-item>
+				<div class="TextEntry">
+					<ion-label>Definition<span class="required">*</span></ion-label>
+					<editor formControlName="Definition" apiKey="6zoo8lpf2bpnvalsp63c53o3mbntdaidtfqf1q7bwmnt5i7d"
+						class="text-area" [init]="{
+							height: 500,
+							menubar: true,
+							plugins: ['code'],
+							toolbar:
+							  'undo redo | formatselect | bold italic | \
+							  alignleft aligncenter alignright alignjustify | \
+							  bullist numlist outdent indent | code'
+						  }"></editor>
+				</div>
+			</ion-item>
+			<ion-item>
+				<ion-label>Form<span class="required">*</span></ion-label>
+				<ion-select placeholder="Select one" formControlName="Form">
+					<ion-select-option value="Weapon">Weapon</ion-select-option>
+					<ion-select-option value="Armour">Armour</ion-select-option>
+					<ion-select-option value="Talisman">Talisman</ion-select-option>
+					<ion-select-option value="Group">Group</ion-select-option>
+				</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label>Type<span class="required">*</span></ion-label>
+				<ion-select placeholder="Select one" formControlName="Type">
+					<ion-select-option value="Dagger" *ngIf="ArtisanData.get('Form').value == 'Weapon'">Dagger</ion-select-option>
+					<ion-select-option value="One-Handed Weapon" *ngIf="ArtisanData.get('Form').value == 'Weapon'">One-Handed Weapon</ion-select-option>
+					<ion-select-option value="Two-Handed Weapon" *ngIf="ArtisanData.get('Form').value == 'Weapon'">Two-Handed Weapon</ion-select-option>
+					<ion-select-option value="One-Handed Spear" *ngIf="ArtisanData.get('Form').value == 'Weapon'">One-Handed Spear</ion-select-option>
+					<ion-select-option value="Paired Weapon" *ngIf="ArtisanData.get('Form').value == 'Weapon'">Paired Weapon</ion-select-option>
+					<ion-select-option value="Polearm" *ngIf="ArtisanData.get('Form').value == 'Weapon'">Polearm</ion-select-option>
+					<ion-select-option value="Bow" *ngIf="ArtisanData.get('Form').value == 'Weapon'">Bow</ion-select-option>
+					<ion-select-option value="Arcane Weapon" *ngIf="ArtisanData.get('Form').value == 'Weapon'">Arcane Weapon</ion-select-option>
+					<ion-select-option value="Wand" *ngIf="ArtisanData.get('Form').value == 'Weapon'">Wand</ion-select-option>
+					<ion-select-option value="Rod" *ngIf="ArtisanData.get('Form').value == 'Weapon'">Rod</ion-select-option>
+					<ion-select-option value="Staff" *ngIf="ArtisanData.get('Form').value == 'Weapon'">Staff</ion-select-option>
+					<ion-select-option value="Ritual Staff" *ngIf="ArtisanData.get('Form').value == 'Weapon'">Bows</ion-select-option>
+					<ion-select-option value="Icon" *ngIf="ArtisanData.get('Form').value == 'Weapon'">Icon</ion-select-option>
+					<ion-select-option value="Musical Instrument" *ngIf="ArtisanData.get('Form').value == 'Weapon'">Musical Intrument</ion-select-option>
+
+					<ion-select-option value="Light Armour" *ngIf="ArtisanData.get('Form').value == 'Armour'">Light Armour</ion-select-option>
+					<ion-select-option value="Medium Armour" *ngIf="ArtisanData.get('Form').value == 'Armour'">Medium Armour</ion-select-option>
+					<ion-select-option value="Heavy Armour" *ngIf="ArtisanData.get('Form').value == 'Armour'">Heavy Armour</ion-select-option>
+					<ion-select-option value="Mage Robe" *ngIf="ArtisanData.get('Form').value == 'Armour'">Mage Robe</ion-select-option>
+					<ion-select-option value="Mage Armour" *ngIf="ArtisanData.get('Form').value == 'Armour'">Mage Armour</ion-select-option>
+					<ion-select-option value="Vestment" *ngIf="ArtisanData.get('Form').value == 'Armour'">Vestment</ion-select-option>
+
+					<ion-select-option value="Shield" *ngIf="ArtisanData.get('Form').value == 'Talisman'">Shield</ion-select-option>
+					<ion-select-option value="Jewellery" *ngIf="ArtisanData.get('Form').value == 'Talisman'">Jewellery</ion-select-option>
+					<ion-select-option value="Focus" *ngIf="ArtisanData.get('Form').value == 'Talisman'">Focus</ion-select-option>
+					<ion-select-option value="Tool" *ngIf="ArtisanData.get('Form').value == 'Talisman'">Tool</ion-select-option>
+					<ion-select-option value="Regalia" *ngIf="ArtisanData.get('Form').value == 'Talisman'">Regalia</ion-select-option>
+					<ion-select-option value="Standard" *ngIf="ArtisanData.get('Form').value == 'Talisman'">Standard</ion-select-option>
+
+					<ion-select-option value="Gonfalon" *ngIf="ArtisanData.get('Form').value == 'Group'">Gonfalon</ion-select-option>
+					<ion-select-option value="Paraphernalia" *ngIf="ArtisanData.get('Form').value == 'Group'">Paraphernalia</ion-select-option>
+					<ion-select-option value="Reliquaries" *ngIf="ArtisanData.get('Form').value == 'Group'">Reliquaries</ion-select-option>
+				</ion-select>
+			</ion-item>
+		</ion-list>
+	</form>
+</ion-content>
