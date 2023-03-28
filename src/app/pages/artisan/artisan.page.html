@@ -8,5 +8,36 @@
 		<ion-item lines="none">
 			<ion-text>Here you can see a list of all artisan recipes. To edit one, use the options menu; to create one, click Add. If you wish to delete one, contact Simon.</ion-text>
 		</ion-item>
+		<ion-item lines="none">
+			<ion-grid>
+				<ion-row class="Labels">
+					<ion-col class="Name">Name</ion-col>
+					<ion-col class="Power">Power</ion-col>
+					<ion-col class="Materials">Materials</ion-col>
+					<ion-col class="Cost">Approx. Cost</ion-col>
+					<ion-col>Last Update</ion-col>
+					<ion-col class="Options">Options</ion-col>
+				</ion-row>
+				<ion-row class="ArtisanRecipes" *ngFor="let _Recipe of _DataService.ArtisanData">
+					<ion-col class="Name">{{_Recipe.Name}}</ion-col>
+					<ion-col class="Power">{{_Recipe.Power}}</ion-col>
+					<ion-col class="Materials"></ion-col>
+					<ion-col class="Cost"></ion-col>
+					<ion-col>{{_DatePipe.transform(_Recipe.LastUpdate, 'd/M/yy, h:mm a')}}</ion-col>
+					<ion-col class="Options">
+						<ion-buttons>
+							<ion-button (click)="OpenOptions($event, _Recipe)">
+								<ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+							</ion-button>
+						</ion-buttons>
+					</ion-col>
+				</ion-row>
+				<ion-row *ngIf="_AuthService.UserData.Verified">
+					<ion-col>
+						<ion-button expand="block" (click)="OpenEditor()">Add</ion-button>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</ion-item>
 	</ion-list>
 </ion-content>
